@@ -7,6 +7,40 @@
     <title>Eeveelutions</title>
 </head>
 <body>
+    <script>
     
+    const storyObject = {storyParts: {introduction: "introduction", forest: "went to forest", cave: "went to cave", ruins: "went to ruins", antidote: "took antidote", noAntidote: "didn't take antidote", leftForForest: "left cave to go to forest", "left for ruins": "left cave to go to ruins", keptSearchingRuins: "kept searching ruins", triedToLeaveRuins: "attempted to leave the ruins", wentIntoSewer: "went into sewer and lost to rival", sewerWithForestNoCave: "fainted in sewers and woke up in flooded mansion", noSewerToday: "didn't go into sewer", straightToFloodedMansion: "didn't prepare first", prepareFirst: "stopped to train first", chinchou: "led by chinchou to beat rival", carvahna: "led by carvahna to beat rival", megaEevee: "took the mega eevee stone", sylveon: "evolved into sylveon", espeon: "evolved into espeon", umbreon: "evolved into umbreon", jolteon: "evolved into jolteon", vaporeon: "evolved into vaporeon", flareon: "evolved into flareon", leafeon: "evolved into leafeon", glaceon: "evolved into glaceon", ending: "returned to visit parents at daycare after becoming the very best like no one ever was"}, choices: {goToForest: "Go to forest", goToCave: "Go to cave", goToRuins: "Go to ruins", takeAntidote: "Get him to buy it", leaveAntidote: "Don't let him buy it for you", keepTraining: "Continue training here", leaveForForest: "Go to forest instead", leaveForRuins: "Go to ruins instead", keepSearching: "Keep searching", leave: "Leave", goIntoSewer: "Check it out", "don't go into sewer": "Ignore it; it's probably nothing", chooseChinchou: "Left", chooseCarvahna: "Right", prepare: "Prepare first", leaveAtOnce: "Head straight for Flooded Mansion", megaEevee: "Mega Eevee", jolteon: "Thunder Stone", flareon: "Fire Stone", vaporeon: "Water Stone", umbreon: "Rare Candy", espeon: "Rare Candy", leafeon: "Grassy Rock", glaceon: "Icy Rock", sylveon: "TM"}}
+ 
+    function displayStory () {
+        let text = "";
+        while (storyObject.currentStoryPart != "ending") {
+            retreiveCurrentStoryPart();
+            retreiveCurrentStoryChoices();
+            for (let parts in currentStory) {
+                text += currentStory.shift;
+            }
+        }
+    }
+ 
+    function retreiveCurrentStoryPart () {
+        let currentStoryPart = "";
+        let lastStoryPart = currentStory.pop();
+        let indexOfCurrentStoryPart = 0;
+        for (let parts in currentStory) {
+            if (parts === lastStoryPart) {
+                parts ++;
+                break;
+            }
+        }
+        currentStoryPart = storyObject[parts];
+    }
+ 
+    function retreiveCurrentStoryChoices () {
+ 
+    }
+ 
+
+
+    </script>
 </body>
 </html>
