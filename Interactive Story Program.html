@@ -6,63 +6,118 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Eeveelutions</title>
 </head>
-<body>
-    <h1 id = "Story"> </h1>
+<body id  = "body">
+    <h1>Eeveelutions</h1>
+    <h2>An Interactive Story</h2>
+    <button onclick = "start()">Start</button>
+    <p1 id = "Story"></p1>
     <script>
     
-    const storyObject = {storyParts: {introduction: "introduction", forest: "went to forest", cave: "went to cave", ruins: "went to ruins", antidote: "took antidote", noAntidote: "didn't take antidote", leftForForest: "left cave to go to forest", "left for ruins": "left cave to go to ruins", keptSearchingRuins: "kept searching ruins", triedToLeaveRuins: "attempted to leave the ruins", wentIntoSewer: "went into sewer and lost to rival", sewerWithForestNoCave: "fainted in sewers and woke up in flooded mansion", noSewerToday: "didn't go into sewer", straightToFloodedMansion: "didn't prepare first", prepareFirst: "stopped to train first", chinchou: "led by chinchou to beat rival", carvahna: "led by carvahna to beat rival", megaEevee: "took the mega eevee stone", sylveon: "evolved into sylveon", espeon: "evolved into espeon", umbreon: "evolved into umbreon", jolteon: "evolved into jolteon", vaporeon: "evolved into vaporeon", flareon: "evolved into flareon", leafeon: "evolved into leafeon", glaceon: "evolved into glaceon", ending: "returned to visit parents at daycare after becoming the very best like no one ever was"}, choices: {goToForest: ["Go to forest", 1], goToCave: ["Go to cave", 1], goToRuins: ["Go to ruins", 1], takeAntidote: ["Get him to buy it", 2], leaveAntidote: ["Don't let him buy it for you", 2], keepTraining: ["Continue training here", 3], leaveForForest: ["Go to forest instead", 3], leaveForRuins: ["Go to ruins instead", 3], keepSearching: ["Keep searching", 4], leave: ["Leave", 4], goIntoSewer: ["Check it out", 5], "don't go into sewer": ["Ignore it; it's probably nothing", 5], chooseChinchou: ["Left", 6], chooseCarvahna: ["Right", 6], prepare: ["Prepare first", 7], leaveAtOnce: ["Head straight for Flooded Mansion", 7], megaEevee: ["Mega Eevee", 8], jolteon: ["Thunder Stone", 8], flareon: ["Fire Stone", 8], vaporeon: ["Water Stone", 8], umbreon: ["Rare Candy", 8], espeon: ["Rare Candy", 8], leafeon: ["Grassy Rock", 8], glaceon: ["Icy Rock", 8], sylveon: ["TM", 8]}}
-    let currentStory = [{}, "introduction"];
-
-    function displayStory () {
-        let text = "";
-        while (retrieveCurrentStoryPart() != "returned to visit parents at daycare after becoming the very best like no one ever was") {
-            retrieveCurrentStoryPart();
-            retrieveCurrentStoryChoices();
-            for (let parts in currentStory) {
-                text += currentStory.shift;
-            }
-        }
+    const storyObject = {storyParts: {introduction: "introduction", forest: ["went to forest", "Go to forest"], cave: ["went to cave", "Go to cave"], ruins: ["went to ruins", "Go to ruins"], antidote: ["took antidote", "Get him to buy it"], noAntidote: ["didn't take antidote", "Don't let him buy it for you"], stayedInCave: ["kept training", "Continue training here"], leftForForest: ["left cave to go to forest", "Go to forest instead"], "left for ruins": ["left cave to go to ruins", "Go to ruins instead"], keptSearchingRuins: ["kept searching ruins", "Kept searching"], triedToLeaveRuins: ["attempted to leave the ruins", "Leave"], wentIntoSewer: ["went into sewer and lost to rival", "Check it out"], sewerWithForestNoCave: ["fainted in sewers and woke up in flooded mansion", "Check it out"], noSewerToday: ["didn't go into sewer", "Ignore it; it's probably nothing"], straightToFloodedMansion: ["didn't prepare first", "Head straight for Flooded Mansion"], prepareFirst: ["stopped to train first", "Prepare first"], chinchou: ["led by chinchou to beat rival", "Left"], carvahna: ["led by carvahna to beat rival", "Right"], megaEevee: ["took the mega eevee stone", "Mega Eevee Stone"], sylveon: ["evolved into sylveon", "TM"], espeon: ["evolved into espeon", "Rare Candy"], umbreon: ["evolved into umbreon", "Rare Candy"], jolteon: ["evolved into jolteon", "Thunder Stone"], vaporeon: ["evolved into vaporeon", "Water Stone"], flareon: ["evolved into flareon", "Fire Stone"], leafeon: ["evolved into leafeon", "Grassy Rock"], glaceon: ["evolved into glaceon", "Icy Rock"], ending: "returned to visit parents at daycare after becoming the very best like no one ever was"}, choices: {goToForest: ["Go to forest", 1, 4], goToCave: ["Go to cave", 1, 5], goToRuins: ["Go to ruins", 1, 6], takeAntidote: ["Get him to buy it", 4, 7], leaveAntidote: ["Don't let him buy it for you", 4, 9], keepTraining: ["Continue training here", 5, 9], leaveForForest: ["Go to forest instead", 5, 4], leaveForRuins: ["Go to ruins instead", 5, 6], keepSearching: ["Keep searching", 6, 7], leave: ["Leave", 6, 9], goIntoSewer: ["Check it out", 7, 9], "don't go into sewer": ["Ignore it; it's probably nothing", 7, 9], chooseChinchou: ["Left", 9, 11], chooseCarvahna: ["Right", 9, 11], prepare: ["Prepare first", 9, 11], leaveAtOnce: ["Head straight for Flooded Mansion", 9, 11], megaEevee: ["Mega Eevee Stone", 11, 12], jolteon: ["Thunder Stone", 11, 12], flareon: ["Fire Stone", 11, 12], vaporeon: ["Water Stone", 11, 12], umbreon: ["Rare Candy", 11, 12], espeon: ["Rare Candy", 11, 12], leafeon: ["Grassy Rock", 11, 12], glaceon: ["Icy Rock", 11, 12], sylveon: ["TM", 11, 12]}}
+    let currentStory = [{}, [0]];
+ 
+    function start() {
+        let start = document.getElementsByTagName("button")[0];
+        start.remove();
+        displayStory();
     }
  
-    function retrieveCurrentStoryPart () {
+    function displayStory() {
+        let element = document.getElementById("Story");
+        let text = "";
+        retrieveCurrentStoryPart();
+        for (let index in currentStory) {
+            if (Number(index) != 0 && Number(index) != 1) {
+                text += `\n${currentStory[index]}`;
+            }
+        }
+        insertProperPokémon();
+        element.innerText = `${text}`;
+        retrieveCurrentStoryChoices();
+    }
+ 
+    function retrieveCurrentStoryPart() {
         let currentStoryPart = "";
         let storyPartsArray = Object.keys(storyObject.storyParts);
-        let lastStoryPart = currentStory.pop();
-        currentStory.push(lastStoryPart);
-        for (let parts in currentStory) {
-            if (currentStory[parts] === lastStoryPart) {
-                currentStoryPart = storyObject.storyParts[storyPartsArray[Number(parts)]];
-                currentStory.push(currentStoryPart);
-                return currentStoryPart;
-            }
-        }
-    }
- 
-    function retrieveCurrentStoryChoices () {
-        let currentStoryChoices = [];
-        if (Object.keys(currentStory[0]).length === 0) {
-            Object.assign(currentStory[0], storyObject.choices.goToForest);
-            currentStoryChoices.push(storyObject.choices.goToForest);
-            Object.assign(currentStory[0], storyObject.choices.goToRuins);
-            currentStoryChoices.push(storyObject.choices.goToRuins);
-            Object.assign(currentStory[0], storyObject.choices.goToCave);
-            currentStoryChoices.push(storyObject.choices.goToCave);
+        if (currentStory.length === 2) {
+            currentStoryPart = storyObject.storyParts[storyPartsArray[0]];
+            currentStory.push(currentStoryPart);
         } else {
-            let storyChoices = Object.keys(storyObject.choices);
-            let lastStoryChoices = Object.keys(currentStory[0]).pop();
-            let currentChoice = null;
-            for (let choice in storyObject.choices) {
-                currentChoice = storyObject.choices[choice];
-                if (currentChoice[1] === Number(lastStoryChoices) + 1) {
-                    currentStoryChoices.push(storyObject.choices[choice]);
+            arrayOfStoryPart = currentStory[1].pop();
+            currentStory[1].push(arrayOfStoryPart);
+            idOfStoryPart = arrayOfStoryPart[0];
+            for (let parts in storyObject.storyParts) {
+                if (storyObject.storyParts[parts][1] === idOfStoryPart) {
+                    currentStoryPart = storyObject.storyParts[parts][0];
+                    if (currentStory.includes("took antidote") === true && currentStory[1].length === 4 && Object.keys(storyObject.storyParts).indexOf(parts) === 11) {
+                    } else if (Object.keys(storyObject.storyParts).indexOf(parts) === 12) {
+                    } else if (currentStory.includes("evolved into espeon") === true && Object.keys(storyObject.storyParts).indexOf(parts) === 21){
+                    } else if (currentStory.includes("went to cave") === true && Object.keys(storyObject.storyParts).indexOf(parts) === 20) {
+                    } else {
+                        currentStory.push(currentStoryPart);
+                        if (Object.keys(storyObject.storyParts).indexOf(parts) > 17) {
+                            currentStory.push(storyObject.storyParts.ending);
+                        }
+                    }
                 }
             }
         }
-        return currentStoryChoices;
     }
  
-
-
+    function retrieveCurrentStoryChoices() {
+        let button = null;
+        let currentStoryChoices = [];
+        let choiceIDs = [];
+        if (currentStory[1].length === 1) {
+            currentStoryChoices.push(storyObject.choices.goToForest[0]);
+            choiceIDs.push(4);
+            currentStoryChoices.push(storyObject.choices.goToRuins[0]);
+            choiceIDs.push(6);
+            currentStoryChoices.push(storyObject.choices.goToCave[0]);
+            choiceIDs.push(5);
+        } else {
+            let lastStoryChoice = currentStory[1].pop();
+            currentStory[1].push(lastStoryChoice);
+            let nextChoiceID = lastStoryChoice[1];
+            let currentChoice = null;
+            for (let choice in storyObject.choices) {
+                currentChoice = storyObject.choices[choice];
+                if (currentChoice[1] === nextChoiceID) {
+                    currentStoryChoices.push(currentChoice[0]);
+                    choiceIDs.push(currentChoice[2]);        
+                }
+            }
+        }
+        for (let buttons in currentStoryChoices) {
+            if (currentStoryChoices.includes("Left") === true && currentStory.includes("took antidote") === false && Number(buttons < 2) || currentStory.includes("didn't go into sewer") === true && Number(buttons < 2) && currentStoryChoices.includes("Left") === true || currentStory.includes("went to cave") === true && Number(buttons < 2) && currentStoryChoices.includes("Left") === true) {
+            } else if (currentStoryChoices.includes("Mega Eevee Stone") === true && currentStory.includes("Prepare first") === false && Number(buttons) === 0 && currentStory.includes("fainted in sewers and woke up in flooded mansion") === false){
+            } else if (currentStory.includes("didn't take antidote") === false && currentStory.includes("attempted to leave the ruins") === false && currentStory.includes("kept training") === false && Number(buttons) === 8){
+            } else if (currentStory.includes("went to cave") === false && Number(buttons) === 5) {
+            } else if (currentStory.includes("went to cave") === true && Number(buttons) === 4) {
+            } else {
+            button = document.createElement("BUTTON");
+            button.innerHTML = currentStoryChoices[buttons];
+            document.body.appendChild(button);
+            button.id = `${button.innerHTML}`;
+            button.onclick = function() {currentStory[1].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
+            button.addEventListener("click", resetButtons);
+            }
+        }
+    }
+ 
+    function resetButtons() {
+        let existingButtons = document.getElementsByTagName("button");
+        let theButton = null;
+        while (existingButtons.length > 0) {
+            theButton = existingButtons[0];
+            theButton.remove();
+        }
+        displayStory();
+    }function insertProperPokémon() {
+    }
+ 
+ 
+ 
     </script>
 </body>
 </html>
