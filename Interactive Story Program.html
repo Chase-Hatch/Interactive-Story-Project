@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chase Hatch and Brennan Strom</title>
 </head>
-<body id  = "body">
-    <h1>Eeveelutions</h1>
-    <h2>An Interactive Story</h2>
-    <div id = "Story"></div>
-    <div id = "buttons">
-        <button onclick = "start()">Start</button>
+<body style = "background-color:rgb(130, 0, 255);">
+    <h1 style = "color: crimson; font-size: 75px; text-align: center;">Eeveelutions</h1>
+    <h2 style = "color: crimson; font-size: 50px; text-align: center;">An Interactive Story</h2>
+    <div id = "Story" style = "color:crimson; font-size: 30px; text-align: center;"></div>
+    <div id = "buttons" style = "text-align: center;">
+        <button onclick = "start()" style ="border-radius: 50%; padding: 15px 10px; background-color: red; color: white;">Start</button>
     </div>
+
     <script>
     
     const storyObject = {storyParts: {introduction: "introduction", forest: ["went to forest", "Go to forest"], cave: ["went to cave", "Go to cave"], ruins: ["went to ruins", "Go to ruins"], antidote: ["took antidote", "Get him to buy it"], noAntidote: ["didn't take antidote", "Don't let him buy it for you"], stayedInCave: ["kept training", "Continue training here"], leftForForest: ["left cave to go to forest", "Go to forest instead"], "left for ruins": ["left cave to go to ruins", "Go to ruins instead"], keptSearchingRuins: ["kept searching ruins", "Kept searching"], triedToLeaveRuins: ["attempted to leave the ruins", "Leave"], wentIntoSewer: ["went into sewer and lost to rival", "Check it out"], sewerWithForestNoCave: ["fainted in sewers and woke up in flooded mansion", "Check it out"], noSewerToday: ["didn't go into sewer", "Ignore it; it's probably nothing"], straightToFloodedMansion: ["didn't prepare first", "Head straight for Flooded Mansion"], prepareFirst: ["stopped to train first", "Prepare first"], chinchou: ["led by chinchou to beat rival", "Left"], carvahna: ["led by carvahna to beat rival", "Right"], megaEevee: ["took the mega eevee stone", "Mega Eevee Stone"], sylveon: ["evolved into sylveon", "TM"], espeon: ["evolved into espeon", "Rare Candy"], umbreon: ["evolved into umbreon", "Rare Candy"], jolteon: ["evolved into jolteon", "Thunder Stone"], vaporeon: ["evolved into vaporeon", "Water Stone"], flareon: ["evolved into flareon", "Fire Stone"], leafeon: ["evolved into leafeon", "Grassy Rock"], glaceon: ["evolved into glaceon", "Icy Rock"], ending: "returned to visit parents at daycare after becoming the very best like no one ever was"}, choices: {goToForest: ["Go to forest", 1, 4], goToCave: ["Go to cave", 1, 5], goToRuins: ["Go to ruins", 1, 6], takeAntidote: ["Get him to buy it", 4, 7], leaveAntidote: ["Don't let him buy it for you", 4, 9], keepTraining: ["Continue training here", 5, 9], leaveForForest: ["Go to forest instead", 5, 4], leaveForRuins: ["Go to ruins instead", 5, 6], keepSearching: ["Keep searching", 6, 7], leave: ["Leave", 6, 9], goIntoSewer: ["Check it out", 7, 9], "don't go into sewer": ["Ignore it; it's probably nothing", 7, 9], chooseChinchou: ["Left", 9, 11], chooseCarvahna: ["Right", 9, 11], prepare: ["Prepare first", 9, 11], leaveAtOnce: ["Head straight for Flooded Mansion", 9, 11], megaEevee: ["Mega Eevee Stone", 11, 12], jolteon: ["Thunder Stone", 11, 12], flareon: ["Fire Stone", 11, 12], vaporeon: ["Water Stone", 11, 12], umbreon: ["Rare Candy", 11, 12], espeon: ["Rare Candy", 11, 12], leafeon: ["Grassy Rock", 11, 12], glaceon: ["Icy Rock", 11, 12], sylveon: ["TM", 11, 12], reset: ['', 12, 1]}}
