@@ -145,12 +145,7 @@
         if (end[1] === 12) {
             let protagonist = document.getElementById("Protagonist Image");
             let eevee = document.getElementById("Eevee");
-            eevee.remove();
-            let eeveelution = document.createElement("IMAGE");
-            eeveelution.setAttribute("src", `${storyObject.images[end[0]]}`);
-            eeveelution.setAttribute("height", "250px");
-            eeveelution.setAttribute("width", "250px");
-            protagonist.appendChild(eeveelution);
+            eevee.setAttribute("src", `${storyObject.images[end[0]]}`);
             let existingButtons = document.getElementsByTagName("input");
             let theButton = null;
             while (existingButtons.length > 0) {
@@ -170,6 +165,8 @@
     }
 
     function resetStory() {
+        let eevee = document.getElementById("Eevee");
+        eevee.setAttribute("src", `https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png`);
         let resetButton = document.getElementById("Reset");
         resetButton.remove();
         currentStory = [];
