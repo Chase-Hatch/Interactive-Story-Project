@@ -17,9 +17,9 @@
 <body style = "background-color:rgb(140, 16, 255);">
     <h1 style = "color: rgb(87, 241, 40); font-size: 75px; text-align: center;">Eeveelutions</h1>
     <h2 style = "color: rgb(44, 167, 7); font-size: 50px; text-align: center;">An Interactive Story</h2>
-    <img src="https://cdn.bulbagarden.net/upload/4/4e/Spr_4h_133_s.png" alt="Eevee" height="250" width="250">
+    <div id = "Protagonist Image" style = "text-align: center;"> <img id = "Eevee" src="https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png" alt="Eevee" height="250" width="250"> </div>
     <div id = "Story" style = "color:rgb(255, 0, 51); font-size: 30px; text-align: center;"></div>
-    <div id = "images" style = "text-align: center;">
+    <div id = "images" style = "text-align: center; font-size: 100px;">
     </div>
     <div id = "buttons" style = "text-align: center; font-size: 100px;">
         <button onclick = "start()" style ="border-radius: 50%; padding: 15px 10px; background-color: red; color: white;">Start</button>
@@ -27,7 +27,7 @@
 
     <script>
     
-    const storyObject = {storyParts: {introduction: "introduction", forest: ["went to forest", "Go to forest"], cave: ["went to cave", "Go to cave"], ruins: ["went to ruins", "Go to ruins"], antidote: ["took antidote", "Get him to buy it"], noAntidote: ["didn't take antidote", "Don't let him buy it for you"], stayedInCave: ["kept training", "Continue training here"], leftForForest: ["left cave to go to forest", "Go to forest instead"], "left for ruins": ["left cave to go to ruins", "Go to ruins instead"], keptSearchingRuins: ["kept searching ruins", "Kept searching"], triedToLeaveRuins: ["attempted to leave the ruins", "Leave"], wentIntoSewer: ["went into sewer and lost to rival", "Check it out"], sewerWithForestNoCave: ["fainted in sewers and woke up in flooded mansion", "Check it out"], noSewerToday: ["didn't go into sewer", "Ignore it; it's probably nothing"], straightToFloodedMansion: ["didn't prepare first", "Head straight for Flooded Mansion"], prepareFirst: ["stopped to train first", "Prepare first"], chinchou: ["led by chinchou to beat rival", "Left"], carvahna: ["led by carvahna to beat rival", "Right"], megaEevee: ["took the mega eevee stone", "Mega Eevee Stone"], sylveon: ["evolved into sylveon", "TM"], espeon: ["evolved into espeon", "Rare Candy"], umbreon: ["evolved into umbreon", "Rare Candy"], jolteon: ["evolved into jolteon", "Thunder Stone"], vaporeon: ["evolved into vaporeon", "Water Stone"], flareon: ["evolved into flareon", "Fire Stone"], leafeon: ["evolved into leafeon", "Grassy Rock"], glaceon: ["evolved into glaceon", "Icy Rock"], ending: "returned to visit parents at daycare after becoming the very best like no one ever was"}, choices: {goToForest: ["Go to forest", 1, 4], goToCave: ["Go to cave", 1, 5], goToRuins: ["Go to ruins", 1, 6], takeAntidote: ["Get him to buy it", 4, 7], leaveAntidote: ["Don't let him buy it for you", 4, 9], keepTraining: ["Continue training here", 5, 9], leaveForForest: ["Go to forest instead", 5, 4], leaveForRuins: ["Go to ruins instead", 5, 6], keepSearching: ["Keep searching", 6, 7], leave: ["Leave", 6, 9], goIntoSewer: ["Check it out", 7, 9], "don't go into sewer": ["Ignore it; it's probably nothing", 7, 9], chooseChinchou: ["Left", 9, 11], chooseCarvahna: ["Right", 9, 11], prepare: ["Prepare first", 9, 11], leaveAtOnce: ["Head straight for Flooded Mansion", 9, 11], megaEevee: ["Mega Eevee Stone", 11, 12], jolteon: ["Thunder Stone", 11, 12], flareon: ["Fire Stone", 11, 12], vaporeon: ["Water Stone", 11, 12], umbreon: ["Rare Candy", 11, 12], espeon: ["Rare Candy", 11, 12], leafeon: ["Grassy Rock", 11, 12], glaceon: ["Icy Rock", 11, 12], sylveon: ["TM", 11, 12], reset: ['', 12, 1]}, images: {'Mega Eevee': 'https://wiki.p-insurgence.com/images/1/1c/133s_1.png', "Thunder Stone": 'https://cdn.bulbagarden.net/upload/5/58/Spr_4h_135_s.png', "Fire Stone": 'https://cdn.bulbagarden.net/upload/c/cb/Spr_4h_136_s.png', "Vaporeon": 'https://cdn.bulbagarden.net/upload/5/5d/Spr_4p_134_s.png', "Rare Candy": 'https://cdn.bulbagarden.net/upload/a/a3/Spr_4h_196_s.png', "Rare Candy": 'https://cdn.bulbagarden.net/upload/d/d6/Spr_4h_197_s.png', "Grassy Rock": 'https://cdn.bulbagarden.net/upload/4/41/Spr_4p_470_s.png', "Icy Rock": 'https://cdn.bulbagarden.net/upload/e/e8/Spr_4p_471_s.png', "TM": 'https://media.giphy.com/media/nTKrp3cVeQWPu/giphy.gif'}}
+    const storyObject = {storyParts: {introduction: "introduction", forest: ["went to forest", "Go to forest"], cave: ["went to cave", "Go to cave"], ruins: ["went to ruins", "Go to ruins"], antidote: ["took antidote", "Get him to buy it"], noAntidote: ["didn't take antidote", "Don't let him buy it for you"], stayedInCave: ["kept training", "Continue training here"], leftForForest: ["left cave to go to forest", "Go to forest instead"], "left for ruins": ["left cave to go to ruins", "Go to ruins instead"], keptSearchingRuins: ["kept searching ruins", "Kept searching"], triedToLeaveRuins: ["attempted to leave the ruins", "Leave"], wentIntoSewer: ["went into sewer and lost to rival", "Check it out"], sewerWithForestNoCave: ["fainted in sewers and woke up in flooded mansion", "Check it out"], noSewerToday: ["didn't go into sewer", "Ignore it; it's probably nothing"], straightToFloodedMansion: ["didn't prepare first", "Head straight for Flooded Mansion"], prepareFirst: ["stopped to train first", "Prepare first"], chinchou: ["led by chinchou to beat rival", "Left"], carvahna: ["led by carvahna to beat rival", "Right"], megaEevee: ["took the mega eevee stone", "Mega Eevee Stone"], sylveon: ["evolved into sylveon", "TM"], espeon: ["evolved into espeon", "Rare Candy"], umbreon: ["evolved into umbreon", "Rare Candy"], jolteon: ["evolved into jolteon", "Thunder Stone"], vaporeon: ["evolved into vaporeon", "Water Stone"], flareon: ["evolved into flareon", "Fire Stone"], leafeon: ["evolved into leafeon", "Grassy Rock"], glaceon: ["evolved into glaceon", "Icy Rock"], ending: "returned to visit parents at daycare after becoming the very best like no one ever was"}, choices: {goToForest: ["Go to forest", 1, 4], goToCave: ["Go to cave", 1, 5], goToRuins: ["Go to ruins", 1, 6], takeAntidote: ["Get him to buy it", 4, 7], leaveAntidote: ["Don't let him buy it for you", 4, 9], keepTraining: ["Continue training here", 5, 9], leaveForForest: ["Go to forest instead", 5, 4], leaveForRuins: ["Go to ruins instead", 5, 6], keepSearching: ["Keep searching", 6, 7], leave: ["Leave", 6, 9], goIntoSewer: ["Check it out", 7, 9], "don't go into sewer": ["Ignore it; it's probably nothing", 7, 9], chooseChinchou: ["Left", 9, 11], chooseCarvahna: ["Right", 9, 11], prepare: ["Prepare first", 9, 11], leaveAtOnce: ["Head straight for Flooded Mansion", 9, 11], megaEevee: ["Mega Eevee Stone", 11, 12], jolteon: ["Thunder Stone", 11, 12], flareon: ["Fire Stone", 11, 12], vaporeon: ["Water Stone", 11, 12], umbreon: ["Rare Candy", 11, 12], espeon: ["Rare Candy", 11, 12], leafeon: ["Grassy Rock", 11, 12], glaceon: ["Icy Rock", 11, 12], sylveon: ["TM", 11, 12], reset: ['', 12, 1]}, images: {'Mega Eevee Stone': 'https://wiki.p-insurgence.com/images/1/1c/133s_1.png', "Thunder Stone": 'https://cdn.bulbagarden.net/upload/f/f6/Spr_5b_135_s.png', "Fire Stone": 'https://cdn.bulbagarden.net/upload/f/f4/Spr_5b_136_s.png', "Water Stone": 'https://cdn.bulbagarden.net/upload/7/70/Spr_5b_134_s.png', "Rare Candy": 'https://cdn.bulbagarden.net/upload/9/9b/Spr_5b_196_s.png', "Rare Candy2": 'https://cdn.bulbagarden.net/upload/9/9b/Spr_5b_196_s.png', "Grassy Rock": 'https://cdn.bulbagarden.net/upload/c/ce/Spr_5b_470_s.png', "Icy Rock": 'https://cdn.bulbagarden.net/upload/0/01/Spr_5b_471_s.png', "TM": 'https://media.giphy.com/media/nTKrp3cVeQWPu/giphy.gif'}}
     let currentStory = [{}, [0]];
  
     function start() {
@@ -104,26 +104,30 @@
         }
         for (let buttons in currentStoryChoices) {
             if (currentStoryChoices.includes("Left") === true && currentStory.includes("took antidote") === false && Number(buttons < 2) || currentStory.includes("didn't go into sewer") === true && Number(buttons < 2) && currentStoryChoices.includes("Left") === true || currentStory.includes("went to cave") === true && Number(buttons < 2) && currentStoryChoices.includes("Left") === true) {
-            } else if (currentStoryChoices.includes("Mega Eevee Stone") === true && currentStory.includes("Prepare first") === false && Number(buttons) === 0 && currentStory.includes("fainted in sewers and woke up in flooded mansion") === false){
+            } else if (currentStoryChoices.includes("Mega Eevee Stone") === true && currentStory.includes("stopped to train first") === false && Number(buttons) === 0 && currentStory.includes("fainted in sewers and woke up in flooded mansion") === false){
             } else if (currentStory.includes("didn't take antidote") === false && currentStory.includes("attempted to leave the ruins") === false && currentStory.includes("kept training") === false && Number(buttons) === 8){
             } else if (currentStory.includes("went to cave") === false && Number(buttons) === 5) {
             } else if (currentStory.includes("went to cave") === true && Number(buttons) === 4) {
             } else if (currentStoryChoices.includes('') === false) {
-                console.log(storyObject.images[currentStoryChoices[buttons]]);
-                console.log(currentStoryChoices[buttons]);
                 if (storyObject.images[currentStoryChoices[buttons]]) {
-                    let picture = document.createElement("IMG");
-                    picture.setAttribute("src", `${storyObject.images[currentStoryChoices[button]]}`);
+                    let picture = document.createElement("INPUT");
+                    picture.setAttribute("type", "image");
+                    picture.setAttribute("src", `${storyObject.images[currentStoryChoices[buttons]]}`);
+                    picture.setAttribute("height", "96px");
+                    picture.setAttribute("width", "96px");
+                    picture.onclick = function() {currentStory[1].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
+                    picture.addEventListener("click", resetButtons);
                     let pictureContainer = document.getElementById("images");
                     pictureContainer.appendChild(picture);
-            }
-                button = document.createElement("BUTTON");
-                button.innerHTML = currentStoryChoices[buttons];
-                let buttonContainer = document.getElementById('buttons');
-                buttonContainer.appendChild(button);
-                button.id = `${button.innerHTML}`;
-                button.onclick = function() {currentStory[1].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
-                button.addEventListener("click", resetButtons);
+                } else {
+                    button = document.createElement("BUTTON");
+                    button.innerHTML = currentStoryChoices[buttons];
+                    let buttonContainer = document.getElementById('buttons');
+                    buttonContainer.appendChild(button);
+                    button.id = `${button.innerHTML}`;
+                    button.onclick = function() {currentStory[1].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
+                    button.addEventListener("click", resetButtons);
+                }
             } else {
                 button = document.createElement("BUTTON");
                 button.innerHTML = "Reset";
@@ -136,13 +140,33 @@
     }
  
     function resetButtons() {
-        let existingButtons = document.getElementsByTagName("button");
-        let theButton = null;
-        while (existingButtons.length > 0) {
-            theButton = existingButtons[0];
-            theButton.remove();
+        let end = currentStory[1].pop();
+        currentStory[1].push(end);
+        if (end[1] === 12) {
+            let protagonist = document.getElementById("Protagonist Image");
+            let eevee = document.getElementById("Eevee");
+            eevee.remove();
+            let eeveelution = document.createElement("IMAGE");
+            eeveelution.setAttribute("src", `${storyObject.images[end[0]]}`);
+            eeveelution.setAttribute("height", "250px");
+            eeveelution.setAttribute("width", "250px");
+            protagonist.appendChild(eeveelution);
+            let existingButtons = document.getElementsByTagName("input");
+            let theButton = null;
+            while (existingButtons.length > 0) {
+                theButton = existingButtons[0];
+                theButton.remove();
+            }
+            displayStory();
+        } else {
+            let existingButtons = document.getElementsByTagName("button");
+            let theButton = null;
+            while (existingButtons.length > 0) {
+                theButton = existingButtons[0];
+                theButton.remove();
+            }
+             displayStory();
         }
-        displayStory();
     }
 
     function resetStory() {
