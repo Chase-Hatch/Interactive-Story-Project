@@ -8,27 +8,42 @@
 </head>
 <style>
 .start {
-    background-color: red;
+    background-color: green;
     color: white;
     border-radius: 50%;
     padding: 15px 10px;
 }
 </style>
-<body style = "background-color:rgb(140, 16, 255);">
-    <h1 style = "color: rgb(87, 241, 40); font-size: 75px; text-align: center;">Eeveelutions</h1>
-    <h2 style = "color: rgb(44, 167, 7); font-size: 50px; text-align: center;">An Interactive Story</h2>
-    <div id = "Protagonist Image" style = "text-align: center;"> <img id = "Eevee" src="https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png" alt="Eevee" height="250" width="250"> </div>
-    <div id = "Story" style = "color:rgb(255, 0, 51); font-size: 30px; text-align: center;"></div>
-    <div id = "images" style = "text-align: center; font-size: 100px;">
+<body style = "background-color:rgb(172, 14, 187);">
+    <h1 style = "color: rgb(3, 199, 173); font-size: 75px; text-align: center;">
+        Eeveelutions
+    </h1>
+    <h2 style = "color: rgb(7, 148, 129); font-size: 50px; text-align: center;">
+        An Interactive Story
+    </h2>
+    <div id = "Protagonist Image" style = "text-align: center;"> 
+        <img id = "Eevee" src="https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png" alt="Eevee" height="250" width="250">
     </div>
+    <div id = "Story" style = "color:rgb(15, 0, 146); font-size: 30px; text-align: center;">
+    </div>
+    <table style = "text-align: center; font-size: 80%; margin: auto; width: 45%">
+        <tr id = "images">
+        </tr>
+    </table>
     <div id = "buttons" style = "text-align: center; font-size: 100px;">
-        <button onclick = "start()" style ="border-radius: 50%; padding: 15px 10px; background-color: red; color: white;">Start</button>
+        <button onclick = "start()" style ="border-radius: 50%; padding: 15px 10px; background-color: green; color: white;">Start</button>
     </div>
-
+    <table style = "text-align:center; margin: auto; width: 80%">
+        <tr>
+            <td id = "undo"></td>
+            <td id = "reset"></td>
+        </tr>
+    </table>
+    <div id = "top" style = "text-align: center;"></div>
     <script>
     
-    const storyObject = {storyParts: {introduction: "introduction", forest: ["went to forest", "Go to forest"], cave: ["went to cave", "Go to cave"], ruins: ["went to ruins", "Go to ruins"], antidote: ["took antidote", "Get him to buy it"], noAntidote: ["didn't take antidote", "Don't let him buy it for you"], stayedInCave: ["kept training", "Continue training here"], leftForForest: ["left cave to go to forest", "Go to forest instead"], "left for ruins": ["left cave to go to ruins", "Go to ruins instead"], keptSearchingRuins: ["kept searching ruins", "Kept searching"], triedToLeaveRuins: ["attempted to leave the ruins", "Leave"], wentIntoSewer: ["went into sewer and lost to rival", "Check it out"], sewerWithForestNoCave: ["fainted in sewers and woke up in flooded mansion", "Check it out"], noSewerToday: ["didn't go into sewer", "Ignore it; it's probably nothing"], straightToFloodedMansion: ["didn't prepare first", "Head straight for Flooded Mansion"], prepareFirst: ["stopped to train first", "Prepare first"], chinchou: ["led by chinchou to beat rival", "Left"], carvahna: ["led by carvahna to beat rival", "Right"], megaEevee: ["took the mega eevee stone", "Mega Eevee Stone"], sylveon: ["evolved into sylveon", "TM"], espeon: ["evolved into espeon", "Rare Candy"], umbreon: ["evolved into umbreon", "Rare Candy"], jolteon: ["evolved into jolteon", "Thunder Stone"], vaporeon: ["evolved into vaporeon", "Water Stone"], flareon: ["evolved into flareon", "Fire Stone"], leafeon: ["evolved into leafeon", "Grassy Rock"], glaceon: ["evolved into glaceon", "Icy Rock"], ending: "returned to visit parents at daycare after becoming the very best like no one ever was"}, choices: {goToForest: ["Go to forest", 1, 4], goToCave: ["Go to cave", 1, 5], goToRuins: ["Go to ruins", 1, 6], takeAntidote: ["Get him to buy it", 4, 7], leaveAntidote: ["Don't let him buy it for you", 4, 9], keepTraining: ["Continue training here", 5, 9], leaveForForest: ["Go to forest instead", 5, 4], leaveForRuins: ["Go to ruins instead", 5, 6], keepSearching: ["Keep searching", 6, 7], leave: ["Leave", 6, 9], goIntoSewer: ["Check it out", 7, 9], "don't go into sewer": ["Ignore it; it's probably nothing", 7, 9], chooseChinchou: ["Left", 9, 11], chooseCarvahna: ["Right", 9, 11], prepare: ["Prepare first", 9, 11], leaveAtOnce: ["Head straight for Flooded Mansion", 9, 11], megaEevee: ["Mega Eevee Stone", 11, 12], jolteon: ["Thunder Stone", 11, 12], flareon: ["Fire Stone", 11, 12], vaporeon: ["Water Stone", 11, 12], umbreon: ["Rare Candy", 11, 12], espeon: ["Rare Candy", 11, 12], leafeon: ["Grassy Rock", 11, 12], glaceon: ["Icy Rock", 11, 12], sylveon: ["TM", 11, 12], reset: ['', 12, 1]}, images: {'Mega Eevee Stone': 'https://wiki.p-insurgence.com/images/1/1c/133s_1.png', "Thunder Stone": 'https://cdn.bulbagarden.net/upload/f/f6/Spr_5b_135_s.png', "Fire Stone": 'https://cdn.bulbagarden.net/upload/f/f4/Spr_5b_136_s.png', "Water Stone": 'https://cdn.bulbagarden.net/upload/7/70/Spr_5b_134_s.png', "Rare Candy": 'https://cdn.bulbagarden.net/upload/9/9b/Spr_5b_196_s.png', "Rare Candy2": 'https://cdn.bulbagarden.net/upload/9/9b/Spr_5b_196_s.png', "Grassy Rock": 'https://cdn.bulbagarden.net/upload/c/ce/Spr_5b_470_s.png', "Icy Rock": 'https://cdn.bulbagarden.net/upload/0/01/Spr_5b_471_s.png', "TM": 'https://media.giphy.com/media/nTKrp3cVeQWPu/giphy.gif'}}
-    let currentStory = [{}, [0]];
+    const storyObject = {storyParts: {introduction: "introduction", forest: ["went to forest", "Go to forest"], cave: ["went to cave", "Go to cave"], ruins: ["went to ruins", "Go to ruins"], antidote: ["took antidote", "Get him to buy it"], noAntidote: ["didn't take antidote", "Don't let him buy it for you"], stayedInCave: ["kept training", "Continue training here"], leftForForest: ["left cave to go to forest", "Go to forest instead"], "left for ruins": ["left cave to go to ruins", "Go to ruins instead"], keptSearchingRuins: ["kept searching ruins", "Keep searching"], triedToLeaveRuins: ["attempted to leave the ruins", "Leave"], wentIntoSewer: ["went into sewer and lost to rival", "Check it out"], sewerWithForestNoCave: ["fainted in sewers and woke up in flooded mansion", "Check it out"], noSewerToday: ["didn't go into sewer", "Ignore it; it's probably nothing"], straightToFloodedMansion: ["didn't prepare first", "Head straight for Flooded Mansion"], prepareFirst: ["stopped to train first", "Prepare first"], chinchou: ["led by chinchou to beat rival", "Left"], carvahna: ["led by carvahna to beat rival", "Right"], megaEevee: ["took the mega eevee stone", "Mega Eevee Stone"], sylveon: ["evolved into sylveon", "TM"], espeon: ["evolved into espeon", "Rare Candy"], umbreon: ["evolved into umbreon", "Rare Candy"], jolteon: ["evolved into jolteon", "Thunder Stone"], vaporeon: ["evolved into vaporeon", "Water Stone"], flareon: ["evolved into flareon", "Fire Stone"], leafeon: ["evolved into leafeon", "Grassy Rock"], glaceon: ["evolved into glaceon", "Icy Rock"], ending: "returned to visit parents at daycare after becoming the very best like no one ever was"}, choices: {goToForest: ["Go to forest", 1, 4], goToCave: ["Go to cave", 1, 5], goToRuins: ["Go to ruins", 1, 6], takeAntidote: ["Get him to buy it", 4, 7], leaveAntidote: ["Don't let him buy it for you", 4, 9], keepTraining: ["Continue training here", 5, 9], leaveForForest: ["Go to forest instead", 5, 4], leaveForRuins: ["Go to ruins instead", 5, 6], keepSearching: ["Keep searching", 6, 7], leave: ["Leave", 6, 9], goIntoSewer: ["Check it out", 7, 9], "don't go into sewer": ["Ignore it; it's probably nothing", 7, 9], chooseChinchou: ["Left", 9, 11], chooseCarvahna: ["Right", 9, 11], prepare: ["Prepare first", 9, 11], leaveAtOnce: ["Head straight for Flooded Mansion", 9, 11], megaEevee: ["Mega Eevee Stone", 11, 12], jolteon: ["Thunder Stone", 11, 12], flareon: ["Fire Stone", 11, 12], vaporeon: ["Water Stone", 11, 12], umbreon: ["Rare Candy", 11, 12], espeon: ["Rare Candy", 11, 12], leafeon: ["Grassy Rock", 11, 12], glaceon: ["Icy Rock", 11, 12], sylveon: ["TM", 11, 12]}, images: {'Mega Eevee Stone': ['https://wiki.p-insurgence.com/images/1/1c/133s_1.png', 'Mega Eevee'], "Thunder Stone": ['https://cdn.bulbagarden.net/upload/f/f6/Spr_5b_135_s.png', 'Jolteon'], "Fire Stone": ['https://cdn.bulbagarden.net/upload/f/f4/Spr_5b_136_s.png', "Flareon"], "Water Stone": ['https://cdn.bulbagarden.net/upload/7/70/Spr_5b_134_s.png', "Vaporeon"], "Rare Candy": ['https://cdn.bulbagarden.net/upload/9/9b/Spr_5b_196_s.png', "Espeon"], "Rare Candy2": ['https://cdn.bulbagarden.net/upload/1/11/Spr_5b_197_s.png', "Umbreon"], "Grassy Rock": ['https://cdn.bulbagarden.net/upload/c/ce/Spr_5b_470_s.png', "Leafeon"], "Icy Rock": ['https://cdn.bulbagarden.net/upload/0/01/Spr_5b_471_s.png', "Glaceon"], "TM": ['https://media.giphy.com/media/nTKrp3cVeQWPu/giphy.gif', "Sylveon"]}}
+    let currentStory = [[]];
  
     function start() {
         let start = document.getElementsByTagName("button")[0];
@@ -41,7 +56,7 @@
         let text = "";
         retrieveCurrentStoryPart();
         for (let index in currentStory) {
-            if (Number(index) != 0 && Number(index) != 1) {
+            if (Number(index) != 0) {
                 text += `\n${currentStory[index]}`;
             }
         }
@@ -53,18 +68,18 @@
     function retrieveCurrentStoryPart() {
         let currentStoryPart = "";
         let storyPartsArray = Object.keys(storyObject.storyParts);
-        if (currentStory.length === 2) {
+        if (currentStory.length === 1) {
             currentStoryPart = storyObject.storyParts[storyPartsArray[0]];
             currentStory.push(currentStoryPart);
         } else {
-            arrayOfStoryPart = currentStory[1].pop();
-            currentStory[1].push(arrayOfStoryPart);
+            arrayOfStoryPart = currentStory[0].pop();
+            currentStory[0].push(arrayOfStoryPart);
             idOfStoryPart = arrayOfStoryPart[0];
             for (let parts in storyObject.storyParts) {
                 if (storyObject.storyParts[parts][1] === idOfStoryPart) {
                     currentStoryPart = storyObject.storyParts[parts][0];
-                    if (currentStory.includes("took antidote") === true && currentStory[1].length === 4 && Object.keys(storyObject.storyParts).indexOf(parts) === 11) {
-                    } else if (Object.keys(storyObject.storyParts).indexOf(parts) === 12) {
+                    if (currentStory.includes("took antidote") === true && currentStory.includes("went to cave") === true && Object.keys(storyObject.storyParts).indexOf(parts) === 12 || currentStory.includes("went to ruins") === true && Object.keys(storyObject.storyParts).indexOf(parts) === 12) {
+                    } else if (Object.keys(storyObject.storyParts).indexOf(parts) === 11 && currentStory.includes("went to cave") === false && currentStory.includes("went to ruins") === false) {
                     } else if (currentStory.includes("evolved into espeon") === true && Object.keys(storyObject.storyParts).indexOf(parts) === 21){
                     } else if (currentStory.includes("went to cave") === true && Object.keys(storyObject.storyParts).indexOf(parts) === 20) {
                     } else {
@@ -82,7 +97,7 @@
         let button = null;
         let currentStoryChoices = [];
         let choiceIDs = [];
-        if (currentStory[1].length === 1) {
+        if (currentStory[0].length === 0) {
             currentStoryChoices.push(storyObject.choices.goToForest[0]);
             choiceIDs.push(4);
             currentStoryChoices.push(storyObject.choices.goToRuins[0]);
@@ -90,8 +105,8 @@
             currentStoryChoices.push(storyObject.choices.goToCave[0]);
             choiceIDs.push(5);
         } else {
-            let lastStoryChoice = currentStory[1].pop();
-            currentStory[1].push(lastStoryChoice);
+            let lastStoryChoice = currentStory[0].pop();
+            currentStory[0].push(lastStoryChoice);
             let nextChoiceID = lastStoryChoice[1];
             let currentChoice = null;
             for (let choice in storyObject.choices) {
@@ -108,70 +123,89 @@
             } else if (currentStory.includes("didn't take antidote") === false && currentStory.includes("attempted to leave the ruins") === false && currentStory.includes("kept training") === false && Number(buttons) === 8){
             } else if (currentStory.includes("went to cave") === false && Number(buttons) === 5) {
             } else if (currentStory.includes("went to cave") === true && Number(buttons) === 4) {
-            } else if (currentStoryChoices.includes('') === false) {
-                if (storyObject.images[currentStoryChoices[buttons]]) {
-                    let picture = document.createElement("INPUT");
-                    picture.setAttribute("type", "image");
-                    picture.setAttribute("src", `${storyObject.images[currentStoryChoices[buttons]]}`);
-                    picture.setAttribute("height", "96px");
-                    picture.setAttribute("width", "96px");
-                    picture.onclick = function() {currentStory[1].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
-                    picture.addEventListener("click", resetButtons);
-                    let pictureContainer = document.getElementById("images");
-                    pictureContainer.appendChild(picture);
-                } else {
-                    button = document.createElement("BUTTON");
-                    button.innerHTML = currentStoryChoices[buttons];
-                    let buttonContainer = document.getElementById('buttons');
-                    buttonContainer.appendChild(button);
-                    button.id = `${button.innerHTML}`;
-                    button.onclick = function() {currentStory[1].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
-                    button.addEventListener("click", resetButtons);
-                }
+                currentStoryChoices[5] = "Rare Candy2"
+            } else if (storyObject.images[currentStoryChoices[buttons]]) {
+                let row = document.createElement("TD");
+                let picture = document.createElement("INPUT");
+                let caption = document.createElement("FIGCAPTION");
+                caption.innerHTML = `${[Object.keys(storyObject.images)[Number(buttons)]]}`;
+                picture.setAttribute("type", "image");
+                picture.setAttribute("src", `${storyObject.images[currentStoryChoices[buttons]][0]}`);
+                picture.setAttribute("height", "96px");
+                picture.setAttribute("width", "96px");
+                picture.onclick = function() {currentStory[0].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
+                picture.addEventListener("click", proceed);
+                row.appendChild(picture);
+                row.appendChild(caption);
+                let pictureContainer = document.getElementById("images");
+                pictureContainer.appendChild(row);
             } else {
                 button = document.createElement("BUTTON");
-                button.innerHTML = "Reset";
+                button.innerHTML = currentStoryChoices[buttons];
+                button.setAttribute("style", "margin: 0px 20px")
                 let buttonContainer = document.getElementById('buttons');
                 buttonContainer.appendChild(button);
-                button.id = `${button.innerHTML}`;
-                button.onclick = function() {resetStory()}
+                button.onclick = function() {currentStory[0].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
+                button.addEventListener("click", proceed);
             }
+        }
+        let up = document.getElementById('top');
+        let undo = document.getElementById('undo');
+        let reset = document.getElementById('reset');
+        let top = document.createElement("BUTTON");
+            top.innerHTML = "Back to Top";
+            top.onclick = function() {scrollToTop()}
+            up.appendChild(top);
+        if (currentStory[0].length > 0) {
+            let button = document.createElement("BUTTON");
+            button.innerHTML = "Reset";
+            button.onclick = function() {resetStory()}
+            let back = document.createElement("BUTTON");
+            back.innerHTML = "Undo";
+            back.onclick = function() {goBack()}
+            undo.appendChild(back);
+            reset.appendChild(button);
+            return;
         }
     }
  
     function resetButtons() {
-        let end = currentStory[1].pop();
-        currentStory[1].push(end);
-        if (end[1] === 12) {
-            let protagonist = document.getElementById("Protagonist Image");
-            let eevee = document.getElementById("Eevee");
-            eevee.setAttribute("src", `${storyObject.images[end[0]]}`);
-            let existingButtons = document.getElementsByTagName("input");
-            let theButton = null;
-            while (existingButtons.length > 0) {
-                theButton = existingButtons[0];
-                theButton.remove();
+        let existingButtons = document.getElementsByTagName("button");
+        let captions = document.getElementsByTagName("td");
+        let theButton = null;
+        let theCaption = null;
+        while (existingButtons.length > 0) {
+            theButton = existingButtons[0];
+            theButton.remove();
+        }
+        let protagonist = document.getElementById("Protagonist Image");
+        let eevee = document.getElementById("Eevee");
+        if (currentStory[0].length > 0) {
+            let end = currentStory[0].pop();
+            currentStory[0].push(end);
+            if (storyObject.images[end[0]]) {
+                eevee.setAttribute("src", `${storyObject.images[end[0]][0]}`);
             }
-            displayStory();
-        } else {
-            let existingButtons = document.getElementsByTagName("button");
-            let theButton = null;
-            while (existingButtons.length > 0) {
-                theButton = existingButtons[0];
-                theButton.remove();
-            }
-             displayStory();
+        }
+        existingButtons = document.getElementsByTagName("input");
+        while (existingButtons.length > 0) {
+            theButton = existingButtons[0];
+            theCaption = captions[0];
+            theButton.remove();
+            theCaption.remove();
         }
     }
-
+ 
+    function proceed() {
+        resetButtons();
+        displayStory();
+    }
+ 
     function resetStory() {
+        resetButtons();
         let eevee = document.getElementById("Eevee");
         eevee.setAttribute("src", `https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png`);
-        let resetButton = document.getElementById("Reset");
-        resetButton.remove();
-        currentStory = [];
-        currentStory.push({});
-        currentStory.push([0]);
+        currentStory = [[]];
         let startButton = document.createElement("BUTTON");
         startButton.innerHTML = "Start";
         startButton.setAttribute("class", "start");
@@ -181,12 +215,24 @@
         let element = document.getElementById("Story");
         element.innerText = '';
     }
-
+ 
     function insertProperPokémon() {
-
+ 
     }
  
+    function goBack() {
+        let eevee = document.getElementById("Eevee");
+        eevee.setAttribute("src", `https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png`);
+        currentStory.pop();
+        currentStory.pop();
+        currentStory[0].pop();
+        proceed();
+    }
  
+ function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+ }
  
     </script>
 </body>
