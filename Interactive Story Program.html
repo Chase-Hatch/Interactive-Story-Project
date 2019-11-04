@@ -272,6 +272,8 @@
         startButton.onclick = function() {start()}
         let element = document.getElementById("Story");
         element.innerText = '';
+        let cry = document.getElementById("Eevee Cry");
+        eevee.onclick = function() {cry.play();}
     }
  
     function insertProperPokémon() {
