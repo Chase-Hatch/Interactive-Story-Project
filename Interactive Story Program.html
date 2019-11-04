@@ -47,7 +47,7 @@
     </div>
     <div id = "Story" style = "color:rgb(131, 21, 2); font-size: 30px; text-align: center;">
     </div>
-    <table style = "text-align: center; font-size: 80%; margin: auto; width: 45%">
+    <table style = "text-align: center; font-size: 80%; margin: auto; width: 35%">
         <tr id = "images">
         </tr>
     </table>
@@ -183,6 +183,8 @@
                 picture.setAttribute("type", "image");
                 picture.setAttribute("src", `${storyObject.images[currentStoryChoices[buttons]][0]}`);
                 picture.setAttribute("class", "image");
+                picture.setAttribute("height", "96px");
+                picture.setAttribute("width", "96px");
                 picture.onclick = function() {currentStory[0].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
                 picture.addEventListener("click", proceed);
                 picture.addEventListener("click", function() {cry.play();});
@@ -279,7 +281,12 @@
     function goBack() {
         let eevee = document.getElementById("Eevee");
         eevee.setAttribute("src", `https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png`);
-        currentStory.pop();
+        if (currentStory[0][currentStory[0].length - 1][1] > 10) {
+            if (currentStory[0][currentStory[0].length - 1][1] === 12) {
+                currentStory.pop();
+            }
+            currentStory.pop();
+        }
         currentStory.pop();
         currentStory[0].pop();
         proceed();

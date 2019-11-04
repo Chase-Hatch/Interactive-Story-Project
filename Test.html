@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+
+.picture {
+    position: relative;
+    display: inline-block;
+}
+
+.picture .text {
+    color: red;
+    visibility: hidden;
+    width: 120px;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+    .picture:hover .text {
+        visibility: visible;
+        opacity: 1;
+    }
+    </style>
+    
+    <img class = "picture" src = "https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png">
+        <p class = "text"></p>
+    </img>
+
+    
+</body>
+</html>
