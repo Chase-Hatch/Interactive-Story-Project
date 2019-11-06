@@ -253,7 +253,7 @@
             for (let parts in storyObject.storyParts) {
                 if (storyObject.storyParts[parts][1] === idOfStoryPart) {
                     currentStoryPart = storyObject.storyParts[parts][0];
-                    if (currentStory.includes("took antidote") && currentStory.includes(`${storyObject.storyParts.cave}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 12 || currentStory.includes(`${storyObject.storyParts.ruins}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 12) {
+                    if (currentStory.includes("took antidote") === true && currentStory.includes(`${storyObject.storyParts.cave}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 12 || currentStory.includes(`${storyObject.storyParts.ruins}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 12) {
                     } else if (Object.keys(storyObject.storyParts).indexOf(parts) === 11 && currentStory.includes(`${storyObject.storyParts.cave}`) === false && currentStory.includes(`${storyObject.storyParts.ruins}`) === false) {
                     } else if (currentStory.includes("evolved into espeon") === true && Object.keys(storyObject.storyParts).indexOf(parts) === 21){
                     } else if (currentStory.includes(`${storyObject.storyParts.cave}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 20) {
