@@ -47,12 +47,13 @@
     </div>
     <pre id = "Story" style = "color:rgb(85, 16, 4); font-size: 30px; white-space: pre-wrap;">
     </pre>
+    <p id = "question"  style = "color: white; text-align: center;"></p>
+    <div id = "buttons" style = "text-align: center;">
+    </div>
     <table style = "text-align: center; font-size: 80%; margin: auto; width: 35%">
         <tr id = "images">
         </tr>
     </table>
-    <div id = "buttons" style = "text-align: center; font-size: 100px;">
-    </div>
     <table style = "text-align:center; margin: auto; width: 80%">
         <tr>
             <td id = "undo"></td>
@@ -292,9 +293,12 @@
                 }
             }
         }
+        let buttonContainer = document.getElementById('buttons');
+        let question = document.getElementById("question");
         for (let buttons in currentStoryChoices) {
+            question.innerHTML = "What should Eevee do?";
             if (currentStoryChoices.includes("Left") === true && currentStory.includes("took antidote") === false && Number(buttons) < 2 || currentStory.includes("didn't go into sewer") === true && Number(buttons < 2) && currentStoryChoices.includes("Left") === true || currentStory.includes(`${storyObject.storyParts.cave}`) === true && Number(buttons) < 2 && currentStoryChoices.includes("Left") === true) {
-            } else if (currentStoryChoices.includes("Left") === true && currentStory.includes(`${storyObject.storyParts.cave}`) === false && currentStory.includes(`${storyObject.storyParts.forest}`) === true && currentStory.includes("didn't take antidote") === false && Number(buttons) >= 2) {
+            } else if (currentStory.includes("fainted in sewers and woke up in flooded mansion") === true && Number(buttons) >= 2 && currentStoryChoices.includes("Thunder Stone") === false) {
             } else if (currentStoryChoices.includes("Mega Eevee Stone") === true && currentStory.includes("stopped to train first") === false && Number(buttons) === 0 && currentStory.includes("fainted in sewers and woke up in flooded mansion") === false){
             } else if (currentStory.includes("didn't take antidote") === false && currentStory.includes("attempted to leave the ruins") === false && currentStory.includes("kept training") === false && Number(buttons) === 8){
             } else if (currentStory.includes(`${storyObject.storyParts.cave}`) === false && Number(buttons) === 5 || currentStory.includes("took antidote") === false && Number(buttons) === 5 || currentStory.includes("kept searching ruins") === false && Number(buttons) === 5 || currentStory.includes("kept training") === true  && Number(buttons) === 5) {
@@ -329,8 +333,7 @@
             } else {
                 button = document.createElement("BUTTON");
                 button.innerHTML = currentStoryChoices[buttons];
-                button.setAttribute("style", "margin: 0px 20px")
-                let buttonContainer = document.getElementById('buttons');
+                button.setAttribute("style", "margin: 0px 20px");
                 buttonContainer.appendChild(button);
                 button.onclick = function() {currentStory[0].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
                 button.addEventListener("click", proceed);
@@ -358,6 +361,8 @@
  
     function resetButtons() {
         let existingButtons = document.getElementsByTagName("button");
+        let question =  document.getElementById("question");
+        question.innerHTML = "";
         let captions = document.getElementsByTagName("td");
         let theButton = null;
         let theCaption = null;
@@ -407,6 +412,8 @@
         element.innerText = '';
         let cry = document.getElementById("Eevee Cry");
         eevee.onclick = function() {cry.play();}
+        let question = document.getElementById("question");
+        question.innerHTML = '';
     }
  
     function insertProperPokémon() {
