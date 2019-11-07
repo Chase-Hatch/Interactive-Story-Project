@@ -15,11 +15,13 @@
 }
  
 .container {
+    margin: 0px auto;
     text-align: center;
+    width: 250px;
 }
  
 .image {
-    background-color: inherit;
+    src:'https://cdn.bulbagarden.net/upload/7/75/Pok%C3%A9_Ball_battle_V.png';
 }
  
 .container:hover .text {
@@ -41,7 +43,7 @@
         An Interactive Story
     </h2>
     <div id = "Protagonist Image" class = "container"> 
-        <input class = "image" type = "image" id = "Eevee" src="https://cdn.bulbagarden.net/upload/7/75/Pok%C3%A9_Ball_battle_V.png" alt="Eevee" onclick="play()"/>
+        <input type = "image" src = "https://cdn.bulbagarden.net/upload/7/75/Pok%C3%A9_Ball_battle_V.png" id = "Eevee" alt="Eevee" onclick="play()"/>
         <br>
         <span id = "click to start" class = "text">Click Here to Start!</span>
     </div>
@@ -209,7 +211,10 @@
         image.setAttribute("src", "https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png");
         image.setAttribute("height", "250px");
         image.setAttribute("width", "250px");
-        text.innerHTML = "";
+        image.setAttribute("class", "image");
+        image.setAttribute("onmouseover", "this.src = 'https://cdn.bulbagarden.net/upload/d/d1/Spr_5b2_133.png'");
+        image.setAttribute("onmouseout", "this.src = 'https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png'");
+        text.innerHTML = "Standard Eevee";
         }
         let sound = document.getElementById("Eevee Cry");
         sound.play();
@@ -440,3 +445,4 @@
     </script>
 </body>
 </html>
+ 
