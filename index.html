@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chase Hatch and Brennan Strom</title>
+</head>
+<style>
+.start {
+    background-color: green;
+    color: white;
+    border-radius: 50%;
+    padding: 15px 10px;
+}
+ 
+.container {
+    text-align: center;
+}
+ 
+.image {
+    background-color: inherit;
+}
+ 
+.container:hover .text {
+    visibility: visible;
+}
+ 
+.text {
+    visibility: hidden;
+    color: gold;
+    text-align: center;
+}
+ 
+</style>
+<body style = "background-color:rgb(71, 26, 107);">
+    <h1 style = "color: rgb(3, 199, 173); font-size: 75px; text-align: center;">
+        Eeveelutions
+    </h1>
+    <h2 style = "color: rgb(7, 148, 129); font-size: 50px; text-align: center;">
+        An Interactive Story
+    </h2>
+    <div id = "Protagonist Image" class = "container"> 
+        <input class = "image" type = "image" id = "Eevee" src="https://cdn.bulbagarden.net/upload/7/75/Pok%C3%A9_Ball_battle_V.png" alt="Eevee" onclick="play()"/>
+        <br>
+        <span id = "click to start" class = "text">Click Here to Start!</span>
+    </div>
+    <pre id = "Story" style = "color:rgb(85, 16, 4); font-size: 30px; white-space: pre-wrap;">
+    </pre>
+    <p id = "question"  style = "color: white; text-align: center;"></p>
+    <div id = "buttons" style = "text-align: center;">
+    </div>
+    <table style = "text-align: center; font-size: 80%; margin: auto; width: 35%">
+        <tr id = "images">
+        </tr>
+    </table>
+    <table style = "text-align:center; margin: auto; width: 80%">
+        <tr>
+            <td id = "undo"></td>
+            <td id = "reset"></td>
+        </tr>
+    </table>
+    <div id = "top" style = "text-align: center;"></div>
+    <audio id = "Eevee Cry" src="https://play.pokemonshowdown.com/audio/cries/eevee-starter.ogg"></audio>
+    <script>
+    
+        let currentStory = [[]];
+        const storyObject = {
+            
+            storyParts: { 
+                introduction: `   The morning sun had just begun to rise over the pokémon daycare. Stretching, Eevee yawned and shook off the last of her sleepiness. Crawling out of the darkness of her den, her eyes blinked for a moment to adjust to the beautiful orange-pink hues gently brushed across the sky like watercolor on an artist’s canvas. Her magnificent white coat sparkled under the sun’s warm glow as she trotted on over to the kindly old daycare lady, who smiled and handed her a handful of berries: her usual breakfast. Affectionately rubbing up against her leg to express her gratitude, Eevee gently took the berries out of the sweet lady’s hands and brought them back to her den to have breakfast with her mother and father, who had just woken up themselves.
+    “Good morning Mom,” Eevee said softly, setting down the berries in front of them. “Good morning Dad.”
+    “Good morning sweetie,” they replied with a smile.
+    The three quietly ate their breakfast as they peacefully watched the sun rise from the interior of their cozy den. As the sun slowly continued to wake up a drowsy world after a good-night’s sleep, Eevee couldn’t help but feel content. She enjoyed spending time with her parents watching the sun rise, and she wouldn’t trade it for the world. However, the sun eventually made its way up into the sky, and the time came for them to get out of their den and start the day. As she stepped out of the den, she could feel a gentle breeze blowing from the north, ruffling her blue collar of fur. She couldn’t exactly lay a paw on it, but for some odd reason, there just seemed to be something different about today, as if it were not just a mere gentle breeze that blew, but a wind of change that was just about to do something spectacular. Or at least, so she hoped. Sighing, she quickly shrugged off the idea that there was anything unique or special about the day; after all, she had seen many pokémon come and go in her days at the daycare, but never once did she or her parents ever go anywhere. It was simply her mind playing tricks on her, searching for some reason, any reason, to believe that she wasn’t just going to be stuck here in a daycare for the rest of her life.
+    “But that’s okay,” she thought to herself, “because I like it here. I have everything I need. A beautiful meadow to frolic about in, the best parents one could ask for, even a sweet old lady to always make sure that I’m well taken care of— What more could I possibly want?”
+    “Adventure,” it seemed that her heart pleaded from somewhere deep down inside her.
+    But Eevee quickly disregarded these feelings and pushed them back down inside her whence they came, shaking her head as if to shake the thoughts out of her mind.
+    “Eevee— is something wrong?” her mother asked as she and Eevee’s father joined her outside of the den.
+    “No, don’t worry; I’m fine,” she replied.
+    “Aw, come on sweetie, don’t do that to us; we can tell that something’s bothering you. Just go ahead and tell us; we won’t mind,” her father urged her lovingly.
+    Letting out another sigh, Eevee gave in to their request.
+    “Well, it’s just that— have you ever been outside of the daycare? I mean, it’s not like I don’t like it here; I love being able to live in such a wonderful place with you two— but it seems like just about every other pokémon eventually leaves the daycare and has an adventure of their own at some point or another. Why have we always just been stuck here? Won’t a trainer someday come for us like one always does for all the other pokémon that come here?”
+    “I suppose we haven’t spoken much about the outside world,” her mother spoke softly.
+    A nostalgic tone slowly began to seep into her voice as she continued.
+    “We were wondering when you would start getting curious. I guess it’s about time we told you our story.”
+    She sighed, took a deep breath, and continued.
+    “Your father and I haven’t always lived in this here daycare. Why, when we were your age, we were off having a grand adventure of our own with our pokémon trainer.”
+    “That’s right, Eevee; we were traveling all over the region training to become the best pokémon team that the world had ever seen,” her dad added in. “We were bound to take on the Pokémon League and become the best team of pokémon in the region.”
+    “The Pokémon League?”
+    “The Pokémon League is a group of the most powerful trainers in all of the region, consisting of the Elite Four and the Pokémon League Champion. The Elite Four are a group of the four most powerful trainers in the region, whose strengths are only exceeded by the Pokémon League Champion, and beating the Pokémon League is the ultimate test of a pokémon team’s strength,” her mom informed her.
+    “But… what happened? Did you ever battle the Pokémon League? Wh- where’d your trainer go? …Why did you get left here?”
+    “You see,” her father sighed, “the night before we were to take on the Elite Four, our trainer began to worry that we were not going to be strong enough to beat them. Fearing failure, he put the lowest-leveled members of our party—your mother and I— in the daycare and swapped us with a pokémon that could fly and a pokémon that could surf so that we could level up as he began searching far and wide for the G-Max Mega Bracelet Z, an ancient artifact that bestowed the user’s pokémon with an unprecedented amount of power that would make any pokémon team— even a pokémon party of six Magikarp— absolutely unstoppable. Rumors placed the artifact in the flooded mansion just off the coast of JavaScript town, and he promptly rushed over there headfirst without thinking of the dangers that lay ahead. The last time he was ever seen was at the flooded mansion’s entrance. And so, left without a trainer, your mother and I started a new life here in the daycare, and that’s when we had you, by far the best gift that life has ever given us.”
+    Eevee blushed and smiled at her father before looking out through the daycare fencing and into the world beyond.
+    “Do— do you think that we will ever get a chance to leave someday?” she asked.
+    “I sure hope so,” her mother replied.
+                                       ***
+    After the talk with her parents that morning, the rest of the day proceeded as normal, but Eevee just couldn’t stop thinking about how her parents’ journey had been so tragically cut short. 
+    “It’s just not fair,” she thought. “There must be some way for us to get out of this place and make it to the Pokémon League. I knew that there had to be something more to life than this daycare, but… how will we ever get to experience it without any trainer of our own?”
+    As Eevee walked back to her den, she noticed an old tree that had been marked for removal. The tree sat on the side of a hill and swayed precariously in the wind, threatening to collapse right onto the pokémon center that sat just on the other side of the daycare fencing.
+    “Oh, if only that tree would just fall over right now, then we could just run atop it to the pokémon center and right over the daycare fencing! But I bet that by tomorrow, the tree will already be cut down and safely taken away,” she muttered to herself.
+    Suddenly, an idea popped into Eevee’s head.
+    “If the tree won’t fall down before tomorrow,” she thought, “then we’ll just have to make it fall down before then!”
+    Immediately, Eevee rushed back to her den to tell her parents of her plan.
+                                       ***
+    That night, while everyone else was asleep, Eevee and her parents snuck out of their dens to the old tree. Eevee quietly searched the perimeters to make sure that the coast was clear. When she had finished, she gave her parents the signal. Without hesitation, Eevee’s mother and father charged towards the base of the tree’s stump and used take-down.
+    CRASH!!! A thunderous boom soon followed as the tree came down onto the pokémon center’s roof.
+    “Hurry, let’s go!” cried Eevee’s father as they rushed across the treetop to reach the pokémon center before anyone caught them.
+    “Yes, we’re going to make it, we’re going to make it!” Eevee yelped in excitement.
+    But little did she know that her celebration had come a bit too early...
+                                       ***
+    Suddenly, smoke filled Eevee’s lungs, and her paws felt like they were padding over hot coals. She turned back in astonishment to see a fire licking up the tree from its center, forming a barrier between Eevee and her parents.
+    “Mom, Dad, what’s happening?! Where are you?!” Eevee yelled in panic, trying to look through the flames to see her parents trapped on the other side of their tree-bridge.
+    “Eevee, is that you?!” her mom cried. “Thank goodness you’re okay!”
+    “Wait, what was that?! Did you hear that?!” Eevee’s dad shouted.
+    Above Eevee to her left sounded a cruel cackling as perhaps the only chance that they would ever have to escape was being sabotaged.
+    “That will-o-wisp ought to do the trick!” screeched the source of the laughter maniacally.
+    A ghostly bluish-white flame appeared, and the fire consuming their only hope of getting across intensified.
+    Eevee searched around desperately for the laughing pokémon.
+    “Why are you doing this to us!?” she demanded. “Let us go! You don’t know what you’re doing!”
+    As Eevee looked into the night sky for the voice, a ghastly slinked out of the shadows.
+    “Oh, but I do,” he smiled. “You’re coming with me! You’re just the shiny pokémon my trainer was looking for!”
+    “No! I’m not going anywhere with you!”
+    “Stay away from our daughter!” Eevee’s dad yelled.
+    With a swift bite, the ghastly fainted and fell to the floor. 
+    The tree began to crack, unable to bear the weight of Eevee and her parents as the fire continued to deprive it of its integrity. Hearing her parents yelps, Eevee tried to rush over to help them, but the fire continued to block her path back to them. 
+    “Mom, Dad, come on, we need to figure out a way to get you across!”
+    “Eevee, just go, forget about us, run! We’ll be okay!” her dad assured her, shouting over the roar of the raging fire.
+    “That ghastly won’t be out for long; you need to get out of here! Leave and go have an adventure of you own!” her mom added in.
+    “What?! No! I can’t leave you guys like this! We were supposed to escape and have an adventure together! You were supposed to finally get your chance to beat the Pokémon League! Either we all go or I’m staying here with you!”
+    “But this might be your only chance! You need to take it! This isn’t ever going to happen again!” her Dad exclaimed. 
+    “No, I-I can’t— What about your dreams? I can’t leave you guys like this!”
+    “Honey, you are our dreams now! We’ve already had a chance to explore the world. Now it’s your turn!” Eevee’s mom added in desperately.
+    “But—”
+    “Eevee, you have to go now!” her dad urged her.
+    “I don’t want to leave you!”
+    “Eevee, go! And become the very best like no one ever was!”
+    With tears in her eyes, Eevee finally sprinted across to the pokémon center roof just as the tree collapsed and their bridge was broken. She looked back and waved one last goodbye to her parents, who had now tumbled back onto the other side of the daycare fencing, before carefully hopping down from the pokémon center roof and sprinting off into the night.
+                                       ***
+    Hours passed, and Eevee had no idea where she was going. Slowly, the sun began to rise behind her as she trudged on. She was still much too shaken up from what had happened in the past few hours to fall asleep, so she had continued on through the night despite her fatigue from all that had happened. Tired, she began to doubt her decision to leave everything that she knew behind in pursuit of adventure.
+    “What was I thinking? I can’t just go off and have an adventure like this! I should have never left Mom and Dad! Maybe I should just turn back now and return to my cozy warm den with them where I can sleep,” she thought drearily.
+    But then she remembered the looks on her parents’ faces when they were speaking of their past adventures and the hope that was in their eyes when she had left them that night to complete the journey that they had never gotten the chance to finish. She couldn’t possibly give up now, before she’d even started!. She just couldn’t bare to think about the disappointment that would be in their eyes if she returned to the daycare, too cowardly to go on any adventure of her own. So, ignoring these thoughts, she continued to press on. However, despite her best efforts, as time passed and her strength continued to slowly ebb away, worries slowly began to creep their way back into her mind as she grew increasingly more tired.
+    “Will any trainer even like me?”
+    She looked down at her sparkling white coat and blue fur collar, a stark contrast from her parents’ brown coats and tan fur collars.
+    “What if they don’t want to train me because my fur is miscolored? Will my trainer even be a good trainer? What if I end up with that horrible ghastly’s trainer? What if I get caught by a bad trainer that doesn’t even want to help me become better? What if I just get caught and stuck in a pokéball forever? Wh- what if—”
+    Interrupting her thoughts, a loud rustling noise came from nearby! Panicking, Eevee ran into a patch of tall grass and hid. She hoped that whatever it was, it would just pass on by soon. She covered her eyes with her ears and pressed herself into the ground, shaking with fear. Suddenly, a wild pokémon trainer appeared!
+    The trainer gasped, “Oh, an eevee! My very first pokémon is going to be an eevee! Wait a minute…”
+    The trainer looked at Eevee more closely for a moment. Eevee looked at the ground, worrying that the trainer wasn’t going to like her because of her fur. As she did so, a beam of sunlight reflected off of her sparkling white coat and into the trainer’s eyes. The trainer let out a second gasp.
+    “It’s not just any eevee— it’s a shiny eevee! I’ve always wanted to see a shiny pokémon! My first pokémon is going to be extra special now!”
+    The trainer reached into his bag and pulled out a shiny red pokéball.
+    “Eevee, I choose you!” he shouted, throwing the pokéball her way.
+    Caught off guard, Eevee tried to jump to the side to evade the pokéball hurtling straight towards her, but it was no use: in an instant, the pokéball opened up and drew her into its glowing interior.
+    “No, no, this can’t be happening!” Eevee thought, panicking. “I’m trapped! Help!”
+    Eevee struggled and managed to burst out of the pokéball!
+    “Aww! It appeared to be caught!” the trainer moaned.
+    Eevee quickly tried to run away.
+    “No no, please don’t leave me, Eevee!” the trainer pleaded, quickly throwing another pokéball.
+    Eevee was swiftly drawn back into the new pokéball’s interior before she was able to get away.
+    “Oh no, oh no, what do I do! I’m going to get caught! What if this isn’t a good trainer? I’ll be stuck here in this pokéball forever!”
+    Once again, Eevee managed to pull herself free from the pokéball’s grasp.
+    “Aargh! Almost had it!” complained the pokémon trainer.
+    Without hesitating, he threw another ball Eevee’s way.
+    Her strength fading, Eevee struggled to fight against the pokéball’s catching powers.
+    “One!” shouted the trainer, counting the shakes of the pokéball. “Two!! Three!!!”
+    Just then, Eevee barely managed to burst out again.
+    “Gah! It was so close too!” he exclaimed in exasperation.
+    “I’ve got to get out of here!” Eevee thought worriedly. “I can’t keep going like this!”
+    “Come on, Eevee,” the trainer began, reaching into his bag once more, “I choose y— Oh no, I only have one pokéball left!”
+    “Finally,” Eevee thought, “now’s my chance to escape!”
+    She turned around and began to bolt away from the trainer.
+    “W-wait, wait! Eevee, please don’t go, please!” the trainer called, running after her. “Don’t be scared, I’m not going to hurt you. Please, I’ve always wanted a pokémon, and I only have one pokéball left!”
+    But Eevee soon disappeared into the bushes.
+    “That was a close one,” Eevee thought. “But… didn’t I want a pokémon trainer?” she remembered as she began to calm down more from the surprise of everything that had just happened.
+    Something just didn’t feel right about what had just happened. Gathering up her courage, she peered through the bushes and watched as the trainer sat down on a rock with tears in his eyes.
+    “That was my last chance. I’ll never catch a pokémon now with only one pokéball, and especially not a very special shiny one! All I wanted was a chance to take a winning team to the Pokémon League and become the very best pokémon trainer like no one ever was, but now that chance is gone.”
+    The trainer let his last pokéball roll out of his hands and used them to cover his face.
+    “Maybe… maybe he really will be a good trainer,” thought Eevee.
+    Realizing her mistake, she carefully slipped out of the bushes and back towards the trainer.
+    “Bui!” she called to the trainer, rolling the pokéball up to his lap.
+    The trainer sniffed and looked up.
+    “Wha—? You’re back?!? You— you want me to catch you?”
+    “Bui!” Eevee cried, spinning in a circle.
+    “Alright,” the trainer said, picking himself up. “Eevee, I choose you!”
+    He threw his last pokéball into the air and right at Eevee. This time, Eevee didn’t move. One! Two!! Three!!! A soft click was soon heard from the pokéball. The wild eevee was caught!
+    “Thank you, Eevee,” the trainer whispered to Eevee in the pokéball. “You can come on out now. I want my first pokémon to experience the journey right alongside me every step of the way!” he proclaimed, letting Eevee out of her pokéball.
+    “Really?!” Eevee thought. “Wow, he must truly be a good pokémon trainer!”
+    Eevee rubbed up against her new trainer’s leg affectionately to show her gratitude.
+    “Alright Eevee, well we better be on our way if we are going to make it to the Pokémon League! Come on, let’s go!”
+    Eevee happily ran down the road after her trainer. She couldn’t wait to see what experiences awaited her and her trainer! Her adventure had just now begun.
+                                       ***
+    Before long, as the two headed down the road, they arrived at a crossroads.
+    “Huh?” Eevee’s trainer puzzled. “It looks like all of these paths lead to Fastopolis! I wonder which one we should take in order to train to become the strongest… What do you say, Eevee? Should we go through the forest, the cave, or the ruins?”`, forest: [`   Feeling slightly homesick for the woods that surrounded her home in the daycare, Eevee ran over to the forest path.
+    “Bui!” she cried, jumping up and down.
+    “Alright, I guess the forest it is, then!” her trainer exclaimed.
+    Hours had passed, and Eevee and her trainer were beginning to get a bit tired from all of their training. If only they had known that the forest would be filled with poison type pokémon of all kinds! Sluggishly, the two took a break from all of their training and began trekking through the forest in search of someone who would be willing to sell them some more potions and antidotes. Eevee felt bad that she kept getting poisoned and fainting. Her trainer had already used up so much of his potions, antidotes, and revives, among other supplies, on her, and she felt ashamed that she had lost so much of her HP again that they were having to go and get some more healing items.
+    “Come on, Eevee, let’s go heal you up and see if we can train just a little bit longer. You’re doing great!”
+    Eevee looked up gratefully at her trainer. However, although she appreciated his encouragement, she didn’t really believe it. Sighing, she kept on walking along the path with her trainer. As the two continued their march along the forest path, a noise suddenly caught Eevee’s attention! Eevee’s ears perked straight up. Noticing the look on Eevee’s face, her trainer soon stopped in his tracks behind her.
+    “What is it, Eevee?”
+    He stopped and listened with her for a moment. And there it was again! A desperate pokémon’s cry sounded from the tall grass just beyond the trees ahead!
+    “It sounds like another pokémon is in trouble! I have to help them!” thought Eevee.
+    Completely forgetting all about her low HP, she hurried off fearlessly to go aid the pokémon in need.
+    “Wait, Eevee, come back! Where are you going?” her trainer called, struggling to catch up with her.
+    As they drew near to the source of the cry, they immediately saw what had caused all of the commotion: a wild venipede was attacking a defenseless Level 1 thePokémon!
+    Just as the venipede was closing in on the helpless thePokémon, Eevee boldly jumped out in front of  the thePokémon and used Quick Attack.
+    “Eevee, no, wait! You’re going to get poisoned again!” her trainer called out, but it was already too late.
+    The damage had been done. Furious, the venipede lashed out at Eevee with Toxic, badly poisoning her! Barely toughing it out,  Eevee countered with Swift. Realizing that Eevee would be tougher to beat than it thought, the venipede slinked away angrily. Relieved, the shaken up thePokémon looked to Eevee in gratitude.
+    “Thank you so much for saving me! I don’t even know what to say!” the thePokémon told eevee gratefully.
+    “It’s no problem,” Eevee assured the thePokémon, wincing from the pain of the poison.
+    “Eevee, are you okay?” her trainer asked worriedly as he rushed on over.
+    Eevee nodded her head meekly.
+    “Let’s go get you an antidote, and fast!” Alex said as he lifted Eevee into his arms to carry her.
+    As he lifted her up, he noticed the poor thePokémon still standing where Eevee had just been, frightened but alright. It didn’t seem to want to leave Eevee’s side.
+    “ Hey there little fella,” he spoke gently to the thePokémon, “you okay there? Say, how would you like to join our pokémon team, that way you could be with your friend Eevee here all the time! We’re going to go all the way to the Pokémon League and become the best team in the whole region! Why, if you joined us, no one would ever dare pick on you again then!”
+    The thePokémon jumped up in excitement.
+    “I’m out of pokéballs now, so I can’t make you an official member of our team just yet, but you can just follow alongside us for now until you get one of your own.”
+    And so Alex and the thePokémon rushed Eevee off to go find someone selling potions so that they could heal her up.
+                                        ***
+	“Oh, you’d like an antidote, huh? Why, I only have one more! That’ll cost you ₽550,” the greedy merchant laughed smugly.
+	“What?! But that’s outrageous! Antidotes should only cost 100! That’s over five times its actual value!”
+	“Well, then how does ₽650 sound?” he grinned.
+	“What?! No, I could never do that! This is insane!”
+	“Well, am I mistaken, or did you not tell me that you desperately needed an antidote? Since you’re in such desperate need of the antidote, I figured you’d be willing to pay anything for it, no?” the merchant questioned, chuckling once more.
+	Alex looked down at at the only ₽800 that remained in his bag and then the poisoned Eevee in his arms.
+	“If I heal her, then we could keep training and get stronger… but then we might not have enough money for the expenses of our adventure…” thought Alex.
+	He looked down at Eevee in his arms once more.
+	“But how could I not heal her? She can’t keep going on like this! She’ll overwork herself and just faint again, and it will be all my fault! I can’t risk damaging the friendship between us by valuing money over her well-being and just letting her faint! She needs my help! I have to buy it, no matter the cost!”
+	He looked up again only to see the pricetag staring straight back at him: ₽650.
+    “Oh… but would it be worth it to heal her and keep training just to run out of money and never make it to the Pokémon League at all? What to do, what to do…”`, "Go to forest"],
+    
+    cave: [`    Eevee couldn’t help but feel intrigued by the glowing crystals that could be seen from the cave’s entrance. Unable to resist the urge to get a glimpse of those sparkling crystals from close up, Eevee ran over to the entrance of the cave.
+    “Bui, bui, bui!” she cried.
+    “Alright,” her trainer laughed, “the cave it is!”
+    As Eevee and her trainer ventured inside the cave, they started fighting. On the way through, they found a Larvitar going around and being scared away by other pokémon. They tried to approach the Larvitar, but it was scared of them as well, so they had to chase it around until it was finally cornered. When they reached the Larvitar, Alex let Eevee down to communicate with it.
+    “Hello, I’m Eevee! It’s okay; we’re not here to harm you. How about you join us?”
+    The skittish Larvitar agreed, and it began to train with them in the cave. As they ventured around the cave, Eevee couldn’t stand up to the rock type Pokémon and was being battered about battle after battle. Larvitar was their only saving grace. 
+    After yet another loss for Eevee, Alex knew that something had to be done.
+    “Eevee, I don’t think that we’re going to be able to stand up to all of these rock types in the cave. What do you say we head to somewhere else to train to get stronger?”
+`, "Go to cave"], 
+
+    ruins: [`    “The ruins,” Eevee thought, "the ruins of what? I wonder what use to be there? What mysteries might we discover there? Or treasure?"
+    Her interest piqued by the prospect of exploring an ancient ruins for mysteries and treasure, Eevee just couldn’t pass up the opportunity to check things out.
+    “Bui!” Eevee cried, stretching her paw out towards the path that led to the ruins.
+    “You want to go to the ruins, eh? Alright, the ruins it is then!”`, "Go to ruins"], 
+    
+    antidote: [`    Although she hated to ask her trainer to spend so much on her, Eevee knew that she desperately needed her trainer’s help. She looked up at Alex with pleading eyes. Noticing the look on her face, Alex finally decided to give in.
+    “Alright, 650 it is,” he sighed, handing him the money. 
+    He gave Eevee the antidote, and they were able to keep on training in the forest. Eventually they, along with thePokémon made to the next town. They bought a pokéball and caught thePokémon.`, "Get him to buy it"], 
+    
+    noAntidote: [`   “I just can’t let him do this; it’s way too much. Besides, I’ll be able to manage without it. I’ll be fine. Everything will be okay,” she repeated to herself, even though she knew that she truly needed her trainer’s aid.
+    Alex looked down at Eevee one last time, but this time Eevee shook her head. Leaping out of his hands, she stood up to show that she’d be strong enough without it. Although quite hesitant, Alex was convinced by her display of strength and decided not to buy the antidote.
+    “I’m sorry sir, but we just can’t do that. Thank you anyway for the business,” Alex said as he turned to leave with his team.
+    As Eevee followed Alex through the remainder of the forest path to train, the effects of the poison soon intensified now that she was on foot, and she quickly came to regret her decision to act strong. Weak and low on health, she quickly fainted. When Eevee woke up, she was in a Pokécenter She saw Alex catching thePokémon.
+`, "Don't let him buy it for you"], 
+
+stayedInCave: [`    “No, I’m good enough to take  on these rock types; I just need to try harder!” Eevee thought.
+    She shook her head and continued to walk forward.
+    “Well, alright then, if you’re sure about this,” Alex said, reluctantly following Eevee further into the cave.
+`, "Continue training here"], 
+
+leftForForest: [`After their experience in the cave, they realized that the forest was probably a much better place to train than the chaotic cave, for Eevee was able to deal with the pokémon in the forest much more easily.`, "Go to forest instead"], "left for ruins": ["left cave to go to ruins", "Go to ruins instead"], 
+
+keptSearchingRuins: ["kept searching ruins", "Keep searching"], 
+
+triedToLeaveRuins: ["attempted to leave the ruins", "Leave"], 
+
+wentIntoSewer: ["went into sewer and lost to rival", "Check it out"], 
+
+sewerWithForestNoCave: ["fainted in sewers and woke up in flooded mansion", "Check it out"], 
+
+noSewerToday: ["didn't go into sewer", "Ignore it; it's probably nothing"], 
+
+straightToFloodedMansion: ["didn't prepare first", "Head straight for Flooded Mansion"], 
+
+prepareFirst: ["stopped to train first", "Prepare first"], 
+
+chinchou: ["led by chinchou to beat rival", "Left"], 
+
+carvahna: ["led by carvahna to beat rival", "Right"], 
+
+megaEevee: ["took the mega eevee stone", "Mega Eevee Stone"], 
+
+sylveon: ["evolved into sylveon", "TM"], 
+
+espeon: ["evolved into espeon", "Rare Candy"], 
+
+umbreon: ["evolved into umbreon", "Rare Candy"], 
+
+jolteon: ["evolved into jolteon", "Thunder Stone"], 
+
+vaporeon: ["evolved into vaporeon", "Water Stone"], 
+
+flareon: ["evolved into flareon", "Fire Stone"], 
+
+leafeon: ["evolved into leafeon", "Grassy Rock"], 
+
+glaceon: ["evolved into glaceon", "Icy Rock"], 
+
+ending: "returned to visit parents at daycare after becoming the very best like no one ever was"
+}, 
+
+choices:  { 
+    goToForest: ["Go to forest", 1, 4], 
+
+    goToCave: ["Go to cave", 1, 5], 
+
+    goToRuins: ["Go to ruins", 1, 6], 
+
+    takeAntidote: ["Get him to buy it", 4, 7], 
+
+    leaveAntidote: ["Don't let him buy it for you", 4, 9], 
+
+    keepTraining: ["Continue training here", 5, 9], 
+
+    leaveForForest: ["Go to forest instead", 5, 4], 
+
+    leaveForRuins: ["Go to ruins instead", 5, 6], 
+
+    keepSearching: ["Keep searching", 6, 7], 
+
+    leave: ["Leave", 6, 9], 
+
+    goIntoSewer: ["Check it out", 7, 9], 
+
+    "don't go into sewer": ["Ignore it; it's probably nothing", 7, 9], 
+
+    chooseChinchou: ["Left", 9, 11], 
+
+    chooseCarvahna: ["Right", 9, 11], 
+
+    prepare: ["Prepare first", 9, 11], 
+
+    leaveAtOnce: ["Head straight for Flooded Mansion", 9, 11], 
+
+    megaEevee: ["Mega Eevee Stone", 11, 12], 
+
+    jolteon: ["Thunder Stone", 11, 12], 
+
+    flareon: ["Fire Stone", 11, 12], 
+
+    vaporeon: ["Water Stone", 11, 12], 
+
+    umbreon: ["Rare Candy", 11, 12], 
+
+    espeon: ["Rare Candy", 11, 12], 
+
+    leafeon: ["Grassy Rock", 11, 12], 
+
+    glaceon: ["Icy Rock", 11, 12], 
+
+    sylveon: ["TM", 11, 12]
+}, 
+
+images: {
+    'Mega Eevee Stone': ['https://wiki.p-insurgence.com/images/1/1c/133s_1.png', 'Mega Eevee'], 
+
+    "Thunder Stone": ['https://cdn.bulbagarden.net/upload/f/f6/Spr_5b_135_s.png', 'Jolteon'], 
+    
+    "Fire Stone": ['https://cdn.bulbagarden.net/upload/f/f4/Spr_5b_136_s.png', "Flareon"], 
+    
+    "Water Stone": ['https://cdn.bulbagarden.net/upload/7/70/Spr_5b_134_s.png', "Vaporeon"], 
+    
+    "Rare Candy": ['https://cdn.bulbagarden.net/upload/9/9b/Spr_5b_196_s.png', "Espeon"], 
+    
+    "Rare Candy2": ['https://cdn.bulbagarden.net/upload/1/11/Spr_5b_197_s.png', "Umbreon"], 
+    
+    "Grassy Rock": ['https://cdn.bulbagarden.net/upload/c/ce/Spr_5b_470_s.png', "Leafeon"], 
+    
+    "Icy Rock": ['https://cdn.bulbagarden.net/upload/0/01/Spr_5b_471_s.png', "Glaceon"], 
+    
+    "TM": ['https://media.giphy.com/media/nTKrp3cVeQWPu/giphy.gif', "Sylveon"]
+}, 
+
+pokémonCries: {
+    'Mega Eevee Stone': ['https://play.pokemonshowdown.com/audio/cries/eevee.ogg', 'Mega Eevee'], 
+
+    "Thunder Stone": ['https://play.pokemonshowdown.com/audio/cries/jolteon.ogg', 'Jolteon'], 
+
+    "Fire Stone": ['https://play.pokemonshowdown.com/audio/cries/flareon.ogg', "Flareon"], 
+    
+    "Water Stone": ['https://play.pokemonshowdown.com/audio/cries/vaporeon.ogg', "Vaporeon"], 
+    
+    "Rare Candy": ['https://play.pokemonshowdown.com/audio/cries/espeon.ogg', "Espeon"], 
+    
+    "Rare Candy2": ['https://play.pokemonshowdown.com/audio/cries/umbreon.ogg', "Umbreon"], 
+    
+    "Grassy Rock": ['https://play.pokemonshowdown.com/audio/cries/leafeon.ogg', "Leafeon"], 
+    
+    "Icy Rock": ['https://play.pokemonshowdown.com/audio/cries/glaceon.ogg', "Glaceon"], 
+    
+    "TM": ['https://play.pokemonshowdown.com/audio/cries/sylveon.ogg', "Sylveon"]}
+}
+ 
+    function start() {
+        let start = document.getElementsByTagName("button")[0];
+        start.remove();
+        displayStory();
+    }
+ 
+    function play() {
+        let image = document.getElementById("Eevee");
+        let text = document.getElementById("click to start");
+        if (image.src === "https://cdn.bulbagarden.net/upload/7/75/Pok%C3%A9_Ball_battle_V.png") {
+        image.setAttribute("src", "https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png");
+        image.setAttribute("height", "250px");
+        image.setAttribute("width", "250px");
+        text.innerHTML = "";
+        }
+        let sound = document.getElementById("Eevee Cry");
+        sound.play();
+        let buttons = document.getElementById("buttons");
+        if (!document.getElementById("Start") && currentStory.length === 1) {
+            let startButton = document.createElement("BUTTON");
+            startButton.setAttribute("class", "start");
+            startButton.id = "Start";
+            startButton.onclick = function() {start();}
+            startButton.innerHTML = "Start";
+            buttons.appendChild(startButton);
+        }
+    }
+ 
+    function displayStory() {
+        let element = document.getElementById("Story");
+        let text = "";
+        retrieveCurrentStoryPart();
+        for (let index in currentStory) {
+            if (Number(index) != 0) {
+                text += `\n${currentStory[index]}`;
+            }
+        }
+        element.innerText = `${insertProperPokémon(text)}`;
+        retrieveCurrentStoryChoices();
+    }
+ 
+    function retrieveCurrentStoryPart() {
+        let currentStoryPart = "";
+        let storyPartsArray = Object.keys(storyObject.storyParts);
+        if (currentStory.length === 1) {
+            currentStoryPart = storyObject.storyParts[storyPartsArray[0]];
+            currentStory.push(currentStoryPart);
+        } else {
+            if (currentStory.includes(`${storyObject.storyParts.introduction}`) && currentStory[0].length === 0) {
+                idOfStoryPart = 1;
+            } else {
+                arrayOfStoryPart = currentStory[0].pop();
+                currentStory[0].push(arrayOfStoryPart);
+                idOfStoryPart = arrayOfStoryPart[0];
+            }
+            for (let parts in storyObject.storyParts) {
+                if (storyObject.storyParts[parts][1] === idOfStoryPart) {
+                    currentStoryPart = storyObject.storyParts[parts][0];
+                    if (currentStory.includes(`${storyObject.storyParts.antidote[0]}`) && currentStory.includes(`${storyObject.storyParts.cave[0]}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 12 || currentStory.includes(`${storyObject.storyParts.ruins[0]}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 12) {
+                    } else if (Object.keys(storyObject.storyParts).indexOf(parts) === 11 && currentStory.includes(`${storyObject.storyParts.cave[0]}`) === false && currentStory.includes(`${storyObject.storyParts.ruins[0]}`) === false) {
+                    } else if (currentStory.includes(`${storyObject.storyParts.espeon[0]}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 21){
+                    } else if (currentStory.includes(`${storyObject.storyParts.cave[0]}`) === true && Object.keys(storyObject.storyParts).indexOf(parts) === 20) {
+                    } else {
+                        currentStory.push(currentStoryPart);
+                        if (Object.keys(storyObject.storyParts).indexOf(parts) > 17) {
+                            currentStory.push(storyObject.storyParts.ending);
+                        }
+                    }
+                }
+            }
+        }
+    }
+ 
+    function retrieveCurrentStoryChoices() {
+        let button = null;
+        let currentStoryChoices = [];
+        let choiceIDs = [];
+        if (currentStory[0].length === 0) {
+            currentStoryChoices.push(storyObject.choices.goToForest[0]);
+            choiceIDs.push(4);
+            currentStoryChoices.push(storyObject.choices.goToRuins[0]);
+            choiceIDs.push(6);
+            currentStoryChoices.push(storyObject.choices.goToCave[0]);
+            choiceIDs.push(5);
+        } else {
+            let lastStoryChoice = currentStory[0].pop();
+            currentStory[0].push(lastStoryChoice);
+            let nextChoiceID = lastStoryChoice[1];
+            let currentChoice = null;
+            for (let choice in storyObject.choices) {
+                currentChoice = storyObject.choices[choice];
+                if (currentChoice[1] === nextChoiceID) {
+                    currentStoryChoices.push(currentChoice[0]);
+                    choiceIDs.push(currentChoice[2]);        
+                }
+            }
+        }
+        let buttonContainer = document.getElementById('buttons');
+        let question = document.getElementById("question");
+        for (let buttons in currentStoryChoices) {
+            question.innerHTML = "What should Eevee do?";
+            if (currentStoryChoices.includes("Left") === true && currentStory.includes(`${storyObject.storyParts.antidote[0]}`) === false && Number(buttons) < 2 || currentStory.includes(`${storyObject.storyParts.noSewerToday[0]}`) === true && Number(buttons < 2) && currentStoryChoices.includes("Left") === true || currentStory.includes(`${storyObject.storyParts.cave[0]}`) === true && Number(buttons) < 2 && currentStoryChoices.includes("Left") === true) {
+            } else if (currentStory.includes(`${storyObject.storyParts.sewerWithForestNoCave[0]}`) === true && Number(buttons) >= 2 && currentStoryChoices.includes("Thunder Stone") === false) {
+            } else if (currentStoryChoices.includes("Mega Eevee Stone") === true && currentStory.includes(`${storyObject.storyParts.prepareFirst[0]}`) === false && Number(buttons) === 0 && currentStory.includes(`${storyObject.storyParts.sewerWithForestNoCave[0]}`) === false){
+            } else if (currentStory.includes(`${storyObject.storyParts.noAntidote[0]}`) === false && currentStory.includes(`${storyObject.storyParts.triedToLeaveRuins[0]}`) === false && currentStory.includes("kept training") === false && Number(buttons) === 8){
+            } else if (currentStory.includes(`${storyObject.storyParts.cave[0]}`) === false && Number(buttons) === 5 || currentStory.includes(`${storyObject.storyParts.antidote[0]}`) === false && Number(buttons) === 5 || currentStory.includes(`${storyObject.storyParts.keptSearchingRuins[0]}`) === false && Number(buttons) === 5 || currentStory.includes(`${storyObject.storyParts.stayedInCave[0]}`) === true  && Number(buttons) === 5) {
+            } else if (currentStory.includes(`${storyObject.storyParts.cave[0]}`) === true && Number(buttons) === 4  || currentStory.includes(`${storyObject.storyParts.antidote[0]}`) === false && Number(buttons) === 4 || currentStory.includes(`${storyObject.storyParts.keptSearchingRuins[0]}`) === false && Number(buttons) === 4 || currentStory.includes(`${storyObject.storyParts.stayedInCave[0]}`) === true  && Number(buttons) === 4) {
+                currentStoryChoices[5] = "Rare Candy2"
+            } else if (storyObject.images[currentStoryChoices[buttons]]) {
+                let cry = document.createElement("AUDIO");
+                cry.setAttribute("src", `${storyObject.pokémonCries[currentStoryChoices[buttons]][0]}`);
+                cry.setAttribute("id", `${storyObject.pokémonCries[currentStoryChoices[buttons]][1]}`);
+                document.body.appendChild(cry);
+                let row = document.createElement("TD");
+                row.setAttribute("class", "container");
+                let picture = document.createElement("INPUT");
+                let text = document.createElement("SPAN");
+                text.setAttribute("class", "text");
+                text.innerHTML = `(${storyObject.images[Object.keys(storyObject.images)[Number(buttons)]][1]})`;
+                let caption = document.createElement("FIGCAPTION");
+                caption.innerHTML = `${[Object.keys(storyObject.images)[Number(buttons)]]}`;
+                picture.setAttribute("type", "image");
+                picture.setAttribute("src", `${storyObject.images[currentStoryChoices[buttons]][0]}`);
+                picture.setAttribute("class", "image");
+                picture.setAttribute("height", "96px");
+                picture.setAttribute("width", "96px");
+                picture.onclick = function() {currentStory[0].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
+                picture.addEventListener("click", proceed);
+                picture.addEventListener("click", function() {cry.play();});
+                row.appendChild(text);
+                row.appendChild(picture);
+                row.appendChild(caption);
+                let pictureContainer = document.getElementById("images");
+                pictureContainer.appendChild(row);
+            } else {
+                button = document.createElement("BUTTON");
+                button.innerHTML = currentStoryChoices[buttons];
+                button.setAttribute("style", "margin: 0px 20px");
+                buttonContainer.appendChild(button);
+                button.onclick = function() {currentStory[0].push([currentStoryChoices[buttons], choiceIDs[Number(buttons)]])}
+                button.addEventListener("click", proceed);
+            }
+        }
+        let up = document.getElementById('top');
+        let undo = document.getElementById('undo');
+        let reset = document.getElementById('reset');
+        let top = document.createElement("BUTTON");
+            top.innerHTML = "Back to Top";
+            top.onclick = function() {scrollToTop()}
+            up.appendChild(top);
+        if (currentStory[0].length > 0) {
+            let button = document.createElement("BUTTON");
+            button.innerHTML = "Reset";
+            button.onclick = function() {resetStory()}
+            let back = document.createElement("BUTTON");
+            back.innerHTML = "Undo";
+            back.onclick = function() {goBack()}
+            undo.appendChild(back);
+            reset.appendChild(button);
+            return;
+        }
+    }
+ 
+    function resetButtons() {
+        let existingButtons = document.getElementsByTagName("button");
+        let question =  document.getElementById("question");
+        question.innerHTML = "";
+        let captions = document.getElementsByTagName("td");
+        let theButton = null;
+        let theCaption = null;
+        while (existingButtons.length > 0) {
+            theButton = existingButtons[0];
+            theButton.remove();
+        }
+        let protagonist = document.getElementById("Protagonist Image");
+        let eevee = document.getElementById("Eevee");
+        if (currentStory[0].length > 0) {
+            let end = currentStory[0].pop();
+            currentStory[0].push(end);
+            if (storyObject.images[end[0]]) {
+                eevee.setAttribute("src", `${storyObject.images[end[0]][0]}`);
+                eevee.onclick = function() {document.getElementById(`${storyObject.pokémonCries[end[0]][1]}`).play();}
+            }
+        }
+        existingButtons = document.getElementsByTagName("input");
+        while (existingButtons.length > 1) {
+            theButton = existingButtons[0];
+            theCaption = captions[0];
+            if (theButton.id != "Eevee") {
+            theButton.remove();
+            }
+            theCaption.remove();
+        }
+    }
+ 
+    function proceed() {
+        resetButtons();
+        displayStory();
+    }
+ 
+    function resetStory() {
+        resetButtons();
+        let eevee = document.getElementById("Eevee");
+        eevee.setAttribute("src", `https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png`);
+        currentStory = [[]];
+        let startButton = document.createElement("BUTTON");
+        startButton.innerHTML = "Start";
+        startButton.setAttribute("class", "start");
+        startButton.id = "Start";
+        let buttonContainer = document.getElementById('buttons');
+        buttonContainer.appendChild(startButton);
+        startButton.onclick = function() {start()}
+        let element = document.getElementById("Story");
+        element.innerText = '';
+        let cry = document.getElementById("Eevee Cry");
+        eevee.onclick = function() {cry.play();}
+        let question = document.getElementById("question");
+        question.innerHTML = '';
+    }
+ 
+    function insertProperPokémon(story) {
+        if (currentStory.includes(`${storyObject.storyParts.cave[0]}`)) {
+            story = story.replace(/thePokémon/g, "larvitar and petilil");
+        } else {
+            story = story.replace(/thePokémon/g, "petilil");
+        }
+        return story;
+    }
+ 
+    function goBack() {
+        let eevee = document.getElementById("Eevee");
+        eevee.setAttribute("src", `https://cdn.bulbagarden.net/upload/8/89/Spr_5b2_133_s.png`);
+        if (currentStory[0][currentStory[0].length - 1][1] === 12) {
+            currentStory.pop();
+        }
+        currentStory.pop();
+        currentStory.pop();
+        currentStory[0].pop();
+        proceed();
+    }
+ 
+ function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+ }
+ 
+    </script>
+</body>
+</html>
